@@ -7,6 +7,8 @@
 <p>
   <span style="color:#22d3ee"><strong>CS @ Cornell</strong></span>
   <span style="color:#64748b"> · </span>
+  <span style="color:#f59e0b">Full Stack Development</span>
+  <span style="color:#64748b"> · </span>
   <span style="color:#f59e0b">AI Agents</span>
   <span style="color:#64748b"> · </span>
   <span style="color:#a78bfa">Distributed Systems</span>
