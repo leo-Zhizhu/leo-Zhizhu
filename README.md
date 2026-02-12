@@ -1,4 +1,4 @@
-### Hi there 👋
+### Hi there 👋👋👋
 
 I am Leo Zhi from Shanghai China.
 I am now a member of class of 2029 in Cornell University majoring in CS, currently working towards SWE, SDE, or MLE.
