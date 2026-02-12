@@ -64,7 +64,7 @@ I'm at the intersection of **AI agents**, **backend systems**, and **real-world 
 |-----------|---------------------|
 | <span style="color:#22d3ee">**AI Agents & LLM Systems**</span> | Orchestration that users can trust |
 | <span style="color:#f59e0b">**Backend & Distributed Systems**</span> | Scale without the surprise failures |
-| <span style="color:#a78bfa">**Interactive UI/UX**</span> | Humans in the loop, done right |
+| <span style="color:#a78bfa">**Interactive UI/UX**</span> | Humans in the loop, user experience is the key |
 | <span style="color:#f43f5e">**Robotics & Control**</span> | Software that moves the physical world |
 | **Explainable engineering** | *Can users trust it?* not just *can it run?* |
 
