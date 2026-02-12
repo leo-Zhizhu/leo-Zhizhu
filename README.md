@@ -123,5 +123,5 @@ Good engineering is **tradeoffs**, not perfect solutions.
 </picture>
 
 <p style="color:#64748b; font-style: italic;">Software is not just logic — it's a contract with reality.</p>
-add
+
 </div>
