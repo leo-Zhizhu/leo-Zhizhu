@@ -36,6 +36,46 @@ jobs:
           path: profile/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate repo pin cards
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=ginlix-ai&repo=LangAlpha&theme=react&hide_border=true&bg_color=0d1117&title_color=22d3ee
+          path: profile/pin-LangAlpha.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin GroceryManager
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=leo-Zhizhu&repo=GroceryManager&theme=react&hide_border=true&bg_color=0d1117&title_color=22d3ee
+          path: profile/pin-GroceryManager.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin Social-AI-Platform
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=leo-Zhizhu&repo=Social-AI-Platform&theme=react&hide_border=true&bg_color=0d1117&title_color=22d3ee
+          path: profile/pin-Social-AI-Platform.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin MiniSpotify
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=leo-Zhizhu&repo=MiniSpotify&theme=react&hide_border=true&bg_color=0d1117&title_color=22d3ee
+          path: profile/pin-MiniSpotify.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin AgentAI
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=leo-Zhizhu&repo=AgentAI&theme=react&hide_border=true&bg_color=0d1117&title_color=22d3ee
+          path: profile/pin-AgentAI.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Customize stats card labels
         run: |
           sed -i 's/Total Commits  (last year)/Total Recent Commits/g' profile/stats.svg

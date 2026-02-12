@@ -36,6 +36,22 @@
 
 ---
 
+## <span style="color:#22d3ee">📌 Featured repositories</span>
+
+<p align="center">Click a card to open the repo.</p>
+
+<div align="center">
+
+| | |
+|:---:|:---:|
+| [![LangAlpha](./profile/pin-LangAlpha.svg)](https://github.com/ginlix-ai/LangAlpha) | [![GroceryManager](./profile/pin-GroceryManager.svg)](https://github.com/leo-Zhizhu/GroceryManager) |
+| [![Social-AI-Platform](./profile/pin-Social-AI-Platform.svg)](https://github.com/leo-Zhizhu/Social-AI-Platform) | [![MiniSpotify](./profile/pin-MiniSpotify.svg)](https://github.com/leo-Zhizhu/MiniSpotify) |
+| [![AgentAI](./profile/pin-AgentAI.svg)](https://github.com/leo-Zhizhu/AgentAI) | |
+
+</div>
+
+---
+
 <table>
 <tr>
 <td>
