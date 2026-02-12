@@ -6,6 +6,7 @@ My interests sit at the intersection of:
 
 - **AI Agents & LLM Systems**
 - **Backend & Distributed Systems**
+- **Interactive UI/UX**
 - **Robotics & Control Software**
 - **Reliable, explainable engineering**
 
