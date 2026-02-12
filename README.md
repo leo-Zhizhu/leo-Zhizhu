@@ -1,51 +1,101 @@
-# Hi, I'm Zhu Zhi, and I go by Leo 👋
+<div align="center">
 
-I’m a Computer Science undergraduate at **Cornell University** who enjoys building systems that actually work in the real world — not just models that look good in a notebook.
+<!-- Typing SVG header -->
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3800&pause=1200&color=58A6FF&center=true&vCenter=true&width=520&lines=Hi%2C+I'm+Zhu+Zhi+%E2%80%94+call+me+Leo+%F0%9F%91%8B;Building+systems+that+work+in+the+real+world" alt="Typing SVG" />
 
-My interests sit at the intersection of:
+<!-- Short tagline -->
+<p><strong>CS @ Cornell</strong> · AI Agents · Distributed Systems · Robotics</p>
 
-- **AI Agents & LLM Systems**
-- **Backend & Distributed Systems**
-- **Interactive UI/UX**
-- **Robotics & Control Software**
-- **Reliable, explainable engineering**
+<!-- Badges row -->
+<img src="https://img.shields.io/badge/Open_to-collaboration-238636?style=for-the-badge&logo=github&logoColor=white" alt="Open to collaboration" />
+<img src="https://img.shields.io/badge/Ithaca%2C_NY-Cornell-AB7A2B?style=for-the-badge&logo=university&logoColor=white" alt="Cornell" />
 
-I care a lot about robustness.  
-Not just *can it run*, but *can users trust it*.
+<br/><br/>
+
+<!-- GitHub Stats -->
+<img src="https://github-readme-stats.vercel.app/api?username=leo-Zhizhu&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58A6FF&icon_color=79c0ff" alt="GitHub Stats" height="165" />
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=leo-Zhizhu&theme=github-dark-blue&hide_border=true&background=0D1117&ring=58A6FF&currStreakLabel=58A6FF" alt="GitHub Streak" height="165" />
+
+<br/>
+
+<!-- Top languages (compact) -->
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=leo-Zhizhu&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58A6FF" alt="Top Languages" height="165" />
+
+</div>
+
+---
+
+## 🧭 What I Care About
+
+I’m at the intersection of **AI agents**, **backend systems**, and **real-world reliability** — not just models that look good in a notebook.
+
+| **Focus** | **Why it matters** |
+|-----------|--------------------|
+| **AI Agents & LLM Systems** | Orchestration that users can trust |
+| **Backend & Distributed Systems** | Scale without the surprise failures |
+| **Interactive UI/UX** | Humans in the loop, done right |
+| **Robotics & Control** | Software that moves the physical world |
+| **Explainable engineering** | *Can users trust it?* not just *can it run?* |
+
+> **My north star:** The user understands *why* the system produced the answer — not just what the answer is.
 
 ---
 
 ## 🧩 How I Think About Engineering
 
-Good engineering is about **tradeoffs**, not perfect solutions.
+Good engineering is **tradeoffs**, not perfect solutions.
 
-I value:
-- clarity over cleverness
-- observability over magic
-- iteration over over-design
-- user needs over technical ego
-- communication + teamwork over working alone
+<table>
+<tr>
+<td width="50%">
 
-My goal is to build systems where:
-> The user understands *why* the system produced the answer — not just what the answer is.
+**I value**
+- Clarity over cleverness  
+- Observability over magic  
+- Iteration over over-design  
+- User needs over technical ego  
+- Communication + teamwork over working alone  
 
----
+</td>
+<td width="50%">
 
-## 🌱 Currently Learning
-- Full stack application development
-- Reliable agent orchestration
-- Human-AI interaction patterns
-- System design at scale
-- Robust real-world automation
-- Robotics control powered by AI
+**Currently learning**
+- Full stack application development  
+- Reliable agent orchestration  
+- Human–AI interaction patterns  
+- System design at scale  
+- Robust real-world automation  
+- Robotics control powered by AI  
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 📫 Reach Me
-- Email: zhizhu0730@gmail.com | zz766@cornell.edu
-- LinkedIn: linkedin.com/in/zhu-zhi-506499376
-- Always open to collaboration, research, and interesting problems
+
+<div align="center">
+
+[![Email](https://img.shields.io/badge/Email-zhizhu0730%40gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:zhizhu0730@gmail.com)
+[![Cornell](https://img.shields.io/badge/Cornell-zz766%40cornell.edu-AB7A2B?style=flat-square&logo=google&logoColor=white)](mailto:zz766@cornell.edu)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Zhu_Zhi-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/zhu-zhi-506499376)
+
+</div>
+
+<p align="center"><i>Always open to collaboration, research, and interesting problems.</i></p>
 
 ---
 
-> Software is not just logic — it’s a contract with reality.
+<div align="center">
+
+<!-- Contribution graph snake (dark/light aware) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/leo-Zhizhu/leo-Zhizhu/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/leo-Zhizhu/leo-Zhizhu/output/github-contribution-grid-snake.svg">
+  <img src="https://raw.githubusercontent.com/leo-Zhizhu/leo-Zhizhu/output/github-contribution-grid-snake.svg" alt="Contribution graph snake" width="100%">
+</picture>
+
+*Software is not just logic — it's a contract with reality.*
+
+</div>
