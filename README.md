@@ -38,17 +38,50 @@
 
 ## <span style="color:#22d3ee">📌 Featured repositories</span>
 
-<p align="center">Click a card to open the repo.</p>
+<table>
+<tr>
+<td width="50%" valign="top">
 
-<div align="center">
+**<span style="color:#22d3ee">[LangAlpha](https://github.com/ginlix-ai/LangAlpha)</span>**  
+<sub>From vibe coding to vibe investing — AI finance agent (Gemini 3, LangChain, PTC)</sub>  
+[![LangAlpha](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/ginlix-ai/LangAlpha)
 
-| | |
-|:---:|:---:|
-| [![LangAlpha](./profile/pin-LangAlpha.svg)](https://github.com/ginlix-ai/LangAlpha) | [![GroceryManager](./profile/pin-GroceryManager.svg)](https://github.com/leo-Zhizhu/GroceryManager) |
-| [![Social-AI-Platform](./profile/pin-Social-AI-Platform.svg)](https://github.com/leo-Zhizhu/Social-AI-Platform) | [![MiniSpotify](./profile/pin-MiniSpotify.svg)](https://github.com/leo-Zhizhu/MiniSpotify) |
-| [![AgentAI](./profile/pin-AgentAI.svg)](https://github.com/leo-Zhizhu/AgentAI) | |
+</td>
+<td width="50%" valign="top">
 
-</div>
+**<span style="color:#f59e0b">[GroceryManager](https://github.com/leo-Zhizhu/GroceryManager)</span>**  
+<sub>Full-stack grocery lists · Spring Boot, React, AWS App Runner</sub>  
+[![GroceryManager](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/GroceryManager)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**<span style="color:#a78bfa">[Social-AI-Platform](https://github.com/leo-Zhizhu/Social-AI-Platform)</span>**  
+<sub>Upload, create & share images/videos · React, Go, Elasticsearch, DALL·E 3</sub>  
+[![Social-AI](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/Social-AI-Platform)
+
+</td>
+<td width="50%" valign="top">
+
+**<span style="color:#f43f5e">[MiniSpotify](https://github.com/leo-Zhizhu/MiniSpotify)</span>**  
+<sub>Lightweight Android music app · Kotlin, Ktor, ExoPlayer, Jetpack Compose</sub>  
+[![MiniSpotify](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/MiniSpotify)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+**<span style="color:#22d3ee">[AgentAI](https://github.com/leo-Zhizhu/AgentAI)</span>**  
+<sub>RAG + web search chat · PDF context, voice I/O · Node.js, React, LangChain, MCP</sub>  
+[![AgentAI](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/AgentAI)
+
+</td>
+<td width="50%" valign="top"></td>
+</tr>
+</table>
 
 ---
 
