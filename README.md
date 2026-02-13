@@ -17,7 +17,7 @@
 </p>
 
 <!-- Badges row - vibrant palette -->
-<img src="https://img.shields.io/badge/Open_to-collaboration-06b6d4?style=for-the-badge&logo=github&logoColor=white" alt="Open to collaboration" />
+<img src="https://img.shields.io/badge/Open_to-internships-06b6d4?style=for-the-badge&logo=github&logoColor=white" alt="Open to internships" />
 <img src="https://img.shields.io/badge/Ithaca%2C_NY-Cornell-f59e0b?style=for-the-badge&logo=university&logoColor=1c1917" alt="Cornell" />
 <img src="https://img.shields.io/badge/Leo_Zhizhu-8b5cf6?style=for-the-badge&logo=github&logoColor=white" alt="Profile" />
 
