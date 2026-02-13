@@ -18,7 +18,7 @@
 </p>
 
 <!-- Badges row - vibrant palette -->
-<img src="https://img.shields.io/badge/Open_to-collaboration-06b6d4?style=for-the-badge&logo=github&logoColor=white" alt="Open to collaboration" />
+<img src="https://img.shields.io/badge/Open_to-internships-06b6d4?style=for-the-badge&logo=github&logoColor=white" alt="Open to internships" />
 <img src="https://img.shields.io/badge/Ithaca%2C_NY-Cornell-f59e0b?style=for-the-badge&logo=university&logoColor=1c1917" alt="Cornell" />
 <img src="https://img.shields.io/badge/Leo_Zhizhu-8b5cf6?style=for-the-badge&logo=github&logoColor=white" alt="Profile" />
 
@@ -59,9 +59,9 @@
 <tr>
 <td width="50%" valign="top">
 
-**<span style="color:#a78bfa">[Social-AI-Platform](https://github.com/leo-Zhizhu/Social-AI-Platform)</span>**  
+**<span style="color:#a78bfa">[Pixel Social](https://github.com/leo-Zhizhu/Pixel-Social)</span>**  
 <sub>Upload, create & share images/videos · React, Go, Elasticsearch, DALL·E 3</sub>  
-[![Social-AI](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/Social-AI-Platform)
+[![Pixel Social](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/Pixel-Social)
 
 </td>
 <td width="50%" valign="top">
@@ -75,9 +75,9 @@
 <tr>
 <td width="50%" valign="top">
 
-**<span style="color:#22d3ee">[AgentAI](https://github.com/leo-Zhizhu/AgentAI)</span>**  
+**<span style="color:#22d3ee">[PaperChat](https://github.com/leo-Zhizhu/PaperChat)</span>**  
 <sub>RAG + web search chat · PDF context, voice I/O · Node.js, React, LangChain, MCP</sub>  
-[![AgentAI](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/AgentAI)
+[![PaperChat](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/PaperChat)
 
 </td>
 <td width="50%" valign="top"></td>
