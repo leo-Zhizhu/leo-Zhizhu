@@ -74,9 +74,9 @@
 <tr>
 <td width="50%" valign="top">
 
-**<span style="color:#22d3ee">[AgentAI](https://github.com/leo-Zhizhu/AgentAI)</span>**  
+**<span style="color:#22d3ee">[PaperChat](https://github.com/leo-Zhizhu/PaperChat)</span>**  
 <sub>RAG + web search chat · PDF context, voice I/O · Node.js, React, LangChain, MCP</sub>  
-[![AgentAI](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/AgentAI)
+[![PaperChat](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/PaperChat)
 
 </td>
 <td width="50%" valign="top"></td>
