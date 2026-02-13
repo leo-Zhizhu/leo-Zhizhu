@@ -58,9 +58,9 @@
 <tr>
 <td width="50%" valign="top">
 
-**<span style="color:#a78bfa">[Pixel Social](https://github.com/leo-Zhizhu/Pixel Social)</span>**  
+**<span style="color:#a78bfa">[Pixel Social](https://github.com/leo-Zhizhu/Pixel-Social)</span>**  
 <sub>Upload, create & share images/videos · React, Go, Elasticsearch, DALL·E 3</sub>  
-[![Pixel Social](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/Pixel Social)
+[![Pixel Social](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/leo-Zhizhu/Pixel-Social)
 
 </td>
 <td width="50%" valign="top">
