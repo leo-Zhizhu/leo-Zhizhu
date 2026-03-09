@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">Zhu Zhi(Leo)'s GitHub Stats, Rank: C+</title>
-        <desc id="descId">Total Stars Earned: 3, Total Recent Commits : 181, Total PRs: 21, Total Issues: 23, Recently contributed to: 4</desc>
+        <desc id="descId">Total Stars Earned: 3, Total Recent Commits : 181, Total PRs: 22, Total Issues: 23, Recently contributed to: 4</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 196.4584678849286;
+        stroke-dashoffset: 195.81192713212414;
       }
     }
   
@@ -192,7 +192,7 @@
         x="219.01"
         y="12.5"
         data-testid="prs"
-      >21</text>
+      >22</text>
     </g>
   </g><g transform="translate(0, 75)">
     <g class="stagger" style="animation-delay: 900ms" transform="translate(25, 0)">
