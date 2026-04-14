@@ -129,7 +129,7 @@ Good engineering is **tradeoffs**, not perfect solutions.
 - Observability over magic  
 - Iteration over over-design  
 - User needs over technical ego  
-- Communication + teamwork over working alone  
+- Communication & teamwork over working alone  
 
 </td>
 <td width="50%">
