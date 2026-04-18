@@ -8,11 +8,9 @@
 <p>
   <span style="color:#22d3ee"><strong>CS @ Cornell</strong></span>
   <span style="color:#64748b"> · </span>
-  <span style="color:#f59e0b">Full Stack Development</span>
+  <span style="color:#f59e0b">Full Stack Software Engineer</span>
   <span style="color:#64748b"> · </span>
-  <span style="color:#f59e0b">AI Agents</span>
-  <span style="color:#64748b"> · </span>
-  <span style="color:#a78bfa">Distributed Systems</span>
+  <span style="color:#f59e0b">Machine Learning Engineer</span>
   <span style="color:#64748b"> · </span>
   <span style="color:#f43f5e">Robotics</span>
 </p>
