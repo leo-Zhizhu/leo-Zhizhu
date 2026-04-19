@@ -42,7 +42,7 @@
 <td width="50%" valign="top">
 
 **<span style="color:#22d3ee">[LangAlpha](https://github.com/ginlix-ai/LangAlpha)</span>**  
-<sub>Claude for financial workers — AI finance agent (Gemini 3, LangChain, PTC)</sub>  
+<sub>Claude code for financial workers — AI finance agent (Gemini 3, LangChain, PTC)</sub>  
 [![LangAlpha](https://img.shields.io/badge/View_repo-06b6d4?style=flat-square&logo=github)](https://github.com/ginlix-ai/LangAlpha)
 
 </td>
