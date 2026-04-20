@@ -35,7 +35,7 @@
 
 ---
 
-## <span style="color:#22d3ee">📌 Featured repositories</span>
+## <span style="color:#22d3ee">Featured repositories</span>
 
 <table>
 <tr>
@@ -88,7 +88,7 @@
 <tr>
 <td>
 
-## 🧭 What I Care About
+## What I Care About
 
 I'm at the intersection of **AI agents**, **backend systems**, and **real-world reliability** — not just models that look good in a notebook.
 
@@ -118,7 +118,7 @@ I'm at the intersection of **AI agents**, **backend systems**, and **real-world 
 <tr>
 <td width="50%">
 
-### <span style="color:#22d3ee">🧩 How I Think About Engineering</span>
+### <span style="color:#22d3ee"> How I Think About Engineering</span>
 
 Good engineering is **tradeoffs**, not perfect solutions.
 
@@ -132,7 +132,7 @@ Good engineering is **tradeoffs**, not perfect solutions.
 </td>
 <td width="50%">
 
-### <span style="color:#f59e0b">🌱 Currently Learning</span>
+### <span style="color:#f59e0b"> Currently Learning</span>
 
 - Full stack application development  
 - Reliable agent orchestration  
