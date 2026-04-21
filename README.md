@@ -157,7 +157,7 @@ Good engineering is **tradeoffs**, not perfect solutions.
 
 </div>
 
-<p align="center"><i style="color:#94a3b8">Always open to collaboration, research, and interesting problems.</i></p>
+<p align="center"><i style="color:#94a3b8">Always open to internships, collaboration, research, and interesting problems.</i></p>
 
 ---
 
