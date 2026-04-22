@@ -139,7 +139,8 @@ Good engineering is **tradeoffs**, not perfect solutions.
 - Human–AI interaction patterns  
 - System design at scale  
 - Robust real-world automation  
-- Robotics control powered by AI  
+- Robotics control powered by AI
+- AI-Infra
 
 </td>
 </tr>
