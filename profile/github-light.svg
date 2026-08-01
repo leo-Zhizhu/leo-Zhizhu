@@ -16,16 +16,16 @@
 <path d="M646.0 72 V112" stroke="#d8dee4" stroke-width="1"/>
 <path d="M28 128 H852" stroke="#d8dee4" stroke-width="1"/>
 <text x="32.0" y="156.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" fill="#818b98" text-anchor="start">Language mix, by bytes of code</text>
-<rect x="32.0" y="166.0" width="506.3" height="12.0" rx="3" fill="#2a78d6"/>
-<rect x="540.3" y="166.0" width="255.1" height="12.0" rx="3" fill="#eb6834"/>
-<rect x="797.3" y="166.0" width="14.5" height="12.0" rx="3" fill="#1baf7a"/>
+<rect x="32.0" y="166.0" width="506.6" height="12.0" rx="3" fill="#2a78d6"/>
+<rect x="540.6" y="166.0" width="254.8" height="12.0" rx="3" fill="#eb6834"/>
+<rect x="797.4" y="166.0" width="14.4" height="12.0" rx="3" fill="#1baf7a"/>
 <rect x="813.8" y="166.0" width="13.2" height="12.0" rx="3" fill="#eda100"/>
 <rect x="829.0" y="166.0" width="5.6" height="12.0" rx="3" fill="#e87ba4"/>
-<rect x="836.6" y="166.0" width="9.4" height="12.0" rx="3" fill="#4a3aa7"/>
+<rect x="836.7" y="166.0" width="9.3" height="12.0" rx="3" fill="#4a3aa7"/>
 <circle cx="36.0" cy="202" r="4.5" fill="#2a78d6"/>
 <text x="46.0" y="206.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#59636e" text-anchor="start">Python 62%</text>
 <circle cx="128.6" cy="202" r="4.5" fill="#eb6834"/>
-<text x="138.6" y="206.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#59636e" text-anchor="start">TypeScript 32%</text>
+<text x="138.6" y="206.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#59636e" text-anchor="start">TypeScript 31%</text>
 <circle cx="241.2" cy="202" r="4.5" fill="#1baf7a"/>
 <text x="251.2" y="206.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#59636e" text-anchor="start">JavaScript 2%</text>
 <circle cx="347.6" cy="202" r="4.5" fill="#eda100"/>
