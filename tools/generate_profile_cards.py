@@ -171,42 +171,36 @@ def tiles(t, y, items, accent):
 # -------------------------------------------------------------------- cards
 
 def hero(t):
-    # The role line stays domain-level on purpose: no single employer should
-    # define the card. Breadth comes from the contexts line, proof from the
-    # stat column, and specificity from the chips.
-    h = 220
-    s = panel(t, h, "Zhu (Leo) Zhi - machine learning and systems engineer")
+    # Deliberately spare: identity, the three disciplines, and the reason.
+    # Numbers and project detail live in the sections below, not up here.
+    h = 214
+    cx = W / 2
+    s = panel(t, h, "Zhu (Leo) Zhi - software, machine learning and "
+                    "robotics engineer")
     s.append(stripe(t, h, t["cyan"]))
 
-    s.append(txt(34, 40, "CORNELL CS '28   ·   GPA 4.0 / 4.0", 10.5,
-                 t["faint"], bold=True, spacing="1.4"))
-    s.append(txt(32, 84, "Zhu (Leo) Zhi", 38, t["text"], bold=True))
-    s.append(txt(34, 112, "Machine Learning Systems · Distributed "
-                 "Infrastructure · AI Agents", 15.5, t["cyan"], bold=True))
-    s.append(txt(34, 138, "I build the parts that have to keep working "
-                 "— on a vehicle, in a cluster, inside an agent loop.",
-                 12.5, t["muted"]))
-    s.append(txt(34, 160, "Code in production on an autonomy fleet, in a "
-                 "54-node cluster, and in a platform 5,000+ people use.",
-                 11.5, t["faint"]))
+    s.append(txt(cx, 46, "CORNELL CS '28   ·   GPA 4.0 / 4.0", 10.5,
+                 t["faint"], bold=True, anchor="middle", spacing="1.4"))
+    s.append(txt(cx, 92, "Zhu (Leo) Zhi", 40, t["text"], bold=True,
+                 anchor="middle"))
 
-    x = 34
-    for label, key in [("On-vehicle inference", "cyan"), ("Kubernetes at "
-                       "scale", "amber"), ("Agent infrastructure", "violet"),
-                       ("Robotics", "rose")]:
-        body, w = chip(t, x, 182, label, colour=t[key])
+    roles = [("Software Engineer", "cyan"),
+             ("Machine Learning Engineer", "amber"),
+             ("Robotics Engineer", "rose")]
+    widths = [tw(label, 12, bold=True) + 26 for label, _ in roles]
+    x = cx - (sum(widths) + 10 * (len(roles) - 1)) / 2
+    for (label, key), w in zip(roles, widths):
+        body, _ = chip(t, x, 116, label, size=12, pad=13, h=24,
+                       colour=t[key])
         s.append(body)
-        x += w + 8
+        x += w + 10
 
-    s.append(f'<path d="M574 34 V186" stroke="{t["rule"]}" stroke-width="1"/>')
-    stats = [("161×", "faster city-scale simulation", "cyan"),
-             ("-70%", "fleet upload volume, shipped", "amber"),
-             ("1.6k", "GitHub stars · 5,000+ users", "violet")]
-    y = 76
-    for value, label, key in stats:
-        s.append(txt(692, y, value, 23, t[key], bold=True, anchor="end"))
-        s.append(txt(706, y - 1, label, 11, t["muted"]))
-        y += 46
+    s.append(txt(cx, 174, "However the technical landscape shifts, "
+                 "engineering keeps returning to one origin:", 13,
+                 t["muted"], anchor="middle"))
+    s.append(txt(cx, 194, "making things that solve real problems — with a "
+                 "coherent mind and a practice that never stops improving.",
+                 13, t["muted"], anchor="middle"))
     return h, s
 
 
