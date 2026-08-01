@@ -1,0 +1,11 @@
+# Python bytecode from tools/
+__pycache__/
+*.py[cod]
+
+# Local environments
+.venv/
+venv/
+
+# OS cruft
+.DS_Store
+Thumbs.db
