@@ -136,27 +136,52 @@ def arrow(t, x1, x2, y):
             f'<path d="M{tip:.1f} {y} l-6.5,-4 v8 z" fill="{t["faint"]}"/>')
 
 
-def flow(t, cy, nodes, accent):
+def varrow(t, x, y1, y2, label=None):
+    """Vertical connector, head at y2. Label sits to the right of the shaft."""
+    down = y2 > y1
+    head_base = y2 - 8 if down else y2 + 8
+    out = (f'<path d="M{x:.1f} {y1} V{head_base:.1f}" stroke="{t["faint"]}" '
+           f'stroke-width="1.5" fill="none"/>'
+           f'<path d="M{x:.1f} {y2} l-4,{-8 if down else 8} h8 z" '
+           f'fill="{t["faint"]}"/>')
+    if label:
+        out += txt(x + 9, (y1 + y2) / 2 + 3.5, label, 10, t["faint"])
+    return out
+
+
+def node_box(t, x, cy, w, top, bot, accent, bh=46, dashed=False):
+    dash = ' stroke-dasharray="5 4"' if dashed else ""
+    body = (f'<rect x="{x:.1f}" y="{cy - bh / 2:.1f}" width="{w:.1f}" '
+            f'height="{bh}" rx="8" fill="{t["inner"]}" '
+            f'stroke="{t["border"]}" stroke-width="1"{dash}/>')
+    if not dashed:
+        body += rect(x, cy - bh / 2, w, 2.5, accent, rx=1.2)
+    body += txt(x + w / 2, cy - 2, top, 11.5, t["text"], bold=True,
+                anchor="middle")
+    body += txt(x + w / 2, cy + 14, bot, 10.5, t["muted"], anchor="middle")
+    return body
+
+
+def layout_flow(nodes, gap=24, pad=15):
+    """Widths and x positions for a centred pipeline. Returns [(x, w), ...]."""
+    widths = [max(tw(top, 11.5, bold=True), tw(bot, 10.5)) + pad * 2
+              for top, bot in nodes]
+    x = (W - (sum(widths) + gap * (len(nodes) - 1))) / 2
+    placed = []
+    for w in widths:
+        placed.append((x, w))
+        x += w + gap
+    return placed
+
+
+def flow(t, cy, nodes, accent, gap=24):
     """Centred pipeline of two-line boxes joined by arrows."""
-    bh, gap, pad = 46, 24, 15
-    widths = []
-    for top, bot in nodes:
-        widths.append(max(tw(top, 11.5, bold=True), tw(bot, 10.5)) + pad * 2)
-    total = sum(widths) + gap * (len(nodes) - 1)
-    x = (W - total) / 2
+    placed = layout_flow(nodes, gap=gap)
     out = []
-    for i, (top, bot) in enumerate(nodes):
-        w = widths[i]
-        out.append(rect(x, cy - bh / 2, w, bh, t["inner"], rx=8,
-                        stroke=t["border"]))
-        out.append(rect(x, cy - bh / 2, w, 2.5, accent, rx=1.2))
-        out.append(txt(x + w / 2, cy - 2, top, 11.5, t["text"], bold=True,
-                       anchor="middle"))
-        out.append(txt(x + w / 2, cy + 14, bot, 10.5, t["muted"],
-                       anchor="middle"))
+    for i, ((x, w), (top, bot)) in enumerate(zip(placed, nodes)):
+        out.append(node_box(t, x, cy, w, top, bot, accent))
         if i < len(nodes) - 1:
             out.append(arrow(t, x + w + 5, x + w + gap - 5, cy))
-        x += w + gap
     return out
 
 
@@ -324,23 +349,65 @@ def project(t, accent_key, title, meta, hook, badges, nodes, stats, label):
 
 
 def bonsai(t):
-    return project(
-        t, "cyan",
-        "On-Vehicle Data Curation Pipeline",
-        "Bonsai Robotics  ·  C++ / ROS 2  ·  private repo  ·  merged to main, "
-        "running on every vehicle",
-        "A fleet records far more than anyone can upload, so the vehicle "
-        "itself decides what is worth sending home.",
-        [("private", False), ("C++ / ROS 2", True)],
-        [("sensor stream", "MCAP recordings"),
-         ("4 scorers", "density · semantics"),
-         ("window score", "anomaly · motion"),
-         ("upload gate", "race-free finalize"),
-         ("cloud", "top windows only")],
-        [("-70%", "upload volume"), ("8×", "usable score spread"),
-         ("<3%", "latency for a distilled VLM"),
-         ("287k", "frames embedded on Ray")],
-        "Bonsai Robotics on-vehicle data curation pipeline")
+    """Custom card: v2 closes a loop through an off-vehicle server, so the
+    plain left-to-right pipeline the other two cards use does not fit."""
+    h, accent = 306, t["cyan"]
+    s = panel(t, h, "Bonsai Robotics on-vehicle data curation pipeline, v2")
+    s.append(stripe(t, h, accent))
+
+    s.append(txt(32, 44, "On-Vehicle Data Curation Pipeline", 19, accent,
+                 bold=True))
+    s.append(txt(32, 66, "Bonsai Robotics  ·  C++ / ROS 2  ·  private repo  ·  "
+                "merged to main, running on every vehicle", 11.5, t["faint"],
+                mono=True))
+    s.append(txt(32, 92, "A fleet records far more than anyone can upload, so "
+                "the vehicle itself decides what is worth sending home.", 13,
+                t["text"]))
+
+    x = W - 32
+    for label, filled in reversed([("private", False), ("v2", False),
+                                   ("C++ / ROS 2", True)]):
+        body, w = chip(t, 0, 0, label, size=11, h=21,
+                       fill=accent if filled else t["chip"],
+                       colour=t["inner"] if filled else t["muted"])
+        x -= w
+        s.append(f'<g transform="translate({x:.1f},31)">{body}</g>')
+        x -= 7
+
+    nodes = [("sensor stream", "MCAP recordings"),
+             ("frame embeddings", "on-vehicle encoder"),
+             ("window score", "distance to vectors"),
+             ("upload gate", "race-free finalize"),
+             ("cloud", "top windows only")]
+    flow_cy = 202
+    placed = layout_flow(nodes)
+    s.extend(flow(t, flow_cy, nodes, accent))
+
+    # The off-vehicle half: a periodic pass over everything uploaded so far
+    # refreshes the characteristic vectors each vehicle scores against.
+    score_x, score_w = placed[2]
+    cloud_x, cloud_w = placed[4]
+    srv_x = score_x
+    srv_w = cloud_x + cloud_w - score_x
+    srv_cy = 133
+    s.append(node_box(t, srv_x, srv_cy, srv_w, "remote fleet server",
+                      "periodic pass over the full dataset", accent,
+                      bh=42, dashed=True))
+    s.append(txt(srv_x - 12, srv_cy + 4, "off-vehicle", 10, t["faint"],
+                 anchor="end"))
+
+    s.append(varrow(t, score_x + score_w / 2, srv_cy + 21, flow_cy - 23,
+                    "refreshed characteristic vectors"))
+    s.append(varrow(t, cloud_x + cloud_w / 2, flow_cy - 23, srv_cy + 21,
+                    "uploaded windows"))
+
+    s.append(f'<path d="M28 248 H{W - 28}" stroke="{t["rule"]}" '
+             f'stroke-width="1"/>')
+    s.extend(tiles(t, 274, [
+        ("-70%", "upload volume"), ("8×", "usable score spread"),
+        ("<3%", "latency for a distilled VLM"),
+        ("287k", "frames embedded on Ray")], accent))
+    return h, s
 
 
 def langalpha(t):

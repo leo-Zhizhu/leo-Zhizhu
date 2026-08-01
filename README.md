@@ -33,13 +33,14 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./profile/card-bonsai-dark.svg">
-  <img src="./profile/card-bonsai-light.svg" width="880" alt="On-vehicle data curation pipeline: sensor stream to four per-frame scorers to a window score to an upload gate to the cloud. 70% less upload volume, 8x usable score spread, under 3% latency cost for a distilled vision-language model, 287k frames embedded on Ray.">
+  <img src="./profile/card-bonsai-light.svg" width="880" alt="On-vehicle data curation pipeline, v2. On the vehicle: sensor stream of MCAP recordings, to frame embeddings from an on-vehicle encoder, to a window score measured as distance to characteristic vectors, to a race-free upload gate, to the cloud. Off the vehicle, a remote fleet server makes a periodic pass over the full uploaded dataset and sends refreshed characteristic vectors back down to the scoring stage, closing the loop. 70% less upload volume, 8x usable score spread, under 3% latency cost for a distilled vision-language model, 287k frames embedded on Ray.">
 </picture>
 
 <sub>Private company repo, so there is no link — this is the part I can describe.</sub>
 
 - A fleet records far more than the network can carry home. The pipeline scores every recording window **on the vehicle** and uploads only the informative ones, cutting upload volume **~70%**. Merged to main and running on every vehicle.
-- Four orthogonal per-frame signals — spatial density, semantic composition, anomalous detections, temporal motion — collapse into one window score. Retuning the thresholds and formulas against real field data widened the usable score spread **8×** (σ 0.021 → 0.169), so short bursts of interest survive long stretches of ordinary driving.
+- **v1** scored each frame on four orthogonal signals — spatial density, semantic composition, anomalous detections, temporal motion — collapsing them into one window score. Retuning the thresholds and formulas against real field data widened the usable score spread **8×** (σ 0.021 → 0.169), so short bursts of interest survive long stretches of ordinary driving.
+- **v2** replaces those hand-tuned scorers with embedding-based scoring, and closes the loop: a remote fleet server makes a periodic pass over the full uploaded dataset and pushes refreshed characteristic vectors down to every vehicle, which then scores each window by its distance to them. What counts as interesting stops being a constant someone tuned and starts tracking what the fleet has already seen.
 - Re-architected critical uploads around an explicit boundary between the **data layer** (recorder-owned MCAP files) and the **annotation layer** (pipeline-owned time windows), and closed the open-recording race by parking windows whose tail extends into the active file, then finalizing them when a covering file closes.
 - Distilling image–language ability from TIPSv2 into the production BEV perception backbone for **under 3%** added latency, verified against the teacher on a 24,471-pair benchmark I designed.
 - Made the team's shared embedding package encoder-agnostic (registry + factory) and embedded **287k frames** through CLIP, TIPSv2 and SigLIP2 on an autoscaling Anyscale Ray GPU cluster.
