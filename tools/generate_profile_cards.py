@@ -35,6 +35,10 @@ THEMES = {
         "track": "#d8dee4", "chip": "#eaeef2", "rule": "#d8dee4",
         "cyan": "#0782a2", "amber": "#b45309",
         "violet": "#6d28d9", "rose": "#be123c",
+        # Eight-slot category order, validated adjacent-pair in this mode.
+        "series": ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
+                   "#e87ba4", "#008300", "#4a3aa7", "#e34948"],
+        "tint": 0.13,
     },
     "dark": {
         "panel": "#161b22", "inner": "#0d1117", "border": "#30363d",
@@ -42,6 +46,9 @@ THEMES = {
         "track": "#30363d", "chip": "#21262d", "rule": "#30363d",
         "cyan": "#1596b0", "amber": "#c98500",
         "violet": "#9085e9", "rose": "#e66767",
+        "series": ["#3987e5", "#d95926", "#199e70", "#c98500",
+                   "#d55181", "#008300", "#9085e9", "#e66767"],
+        "tint": 0.20,
     },
 }
 
@@ -375,36 +382,106 @@ def sunlight(t):
         "SunlightCity distributed simulation pipeline")
 
 
-def stack(t):
-    groups = [
-        ("cyan", "Languages",
-         ["Python", "C++", "Java", "Go", "Kotlin", "C#", "TypeScript", "SQL"]),
-        ("violet", "ML & Agents",
-         ["PyTorch", "ROS 2", "OpenCV", "LangGraph", "LangChain", "MCP",
-          "Ray / Anyscale"]),
-        ("amber", "Backend & Data",
-         ["Spring Boot", "FastAPI", "Node.js", "React", "PostgreSQL",
-          "PostGIS", "Redis", "Elasticsearch"]),
-        ("rose", "Infrastructure",
-         ["Docker", "Kubernetes", "AWS", "Unity headless", "CI/CD", "Linux"]),
-    ]
-    row_h, top = 46, 62
-    h = top + row_h * len(groups) + 12
-    s = panel(t, h, "Technical stack by area")
-    s.append(stripe(t, h, t["violet"]))
-    s.append(txt(32, 42, "Grouped by where I actually use it, not by "
-                "how many tutorials I have read.", 12.5, t["muted"]))
+# Each group is (short label, [tools first, then the concepts they go with]).
+# Colour comes from the theme's validated 8-slot order, by position; every
+# group is also named in text, so identity never rests on colour alone.
+STACK_GROUPS = [
+    ("Languages", [
+        "Python", "C++", "Java", "Go", "Kotlin", "C#", "TypeScript",
+        "JavaScript", "SQL", "Bash",
+    ]),
+    ("ML & Perception", [
+        "PyTorch", "NumPy", "Pandas", "OpenCV", "YOLOv7", "CLIP", "SigLIP2",
+        "TIPSv2", "BEV perception", "knowledge distillation",
+        "vision–language models", "embedding pipelines", "benchmark design",
+        "adaptive thresholding",
+    ]),
+    ("Agents & LLM systems", [
+        "LangGraph", "LangChain", "MCP", "FastMCP", "RAG",
+        "programmatic tool calling", "subagent orchestration",
+        "context engineering", "memory compaction", "sandboxed execution",
+        "SSE streaming", "tool routing",
+    ]),
+    ("Robotics & Control", [
+        "ROS 2", "MCAP", "6-DoF control", "system identification",
+        "controller tuning", "state machines", "sensor fusion",
+        "LiDAR + camera", "real-time on-vehicle", "field-data iteration",
+    ]),
+    ("Backend & Web", [
+        "Spring Boot", "FastAPI", "Node.js", "React", "TanStack Query",
+        "Jetpack Compose", "Room", "Retrofit / OkHttp", "REST APIs",
+        "WebSocket", "session auth", "stale-while-revalidate",
+    ]),
+    ("Data & Storage", [
+        "PostgreSQL", "PostGIS", "Redis", "Elasticsearch", "SQLite",
+        "sharding", "spatial indexing", "query tuning", "bulk ingest",
+        "schema migration", "caching strategy",
+    ]),
+    ("Infrastructure & Scale", [
+        "Docker", "Kubernetes", "AWS (RDS · ECR · App Runner)",
+        "Ray / Anyscale", "Unity headless", "IL2CPP", "MapReduce",
+        "autoscaling", "capacity planning", "CI/CD", "GitHub Actions",
+        "Linux",
+    ]),
+    ("Foundations", [
+        "Machine Learning", "Algorithms & Data Structures", "Databases",
+        "Computer Organization", "Cryptography", "Probability",
+        "Linear Algebra", "Distributed Systems",
+    ]),
+]
 
-    for i, (key, name, items) in enumerate(groups):
-        y = top + row_h * i
-        s.append(f'<circle cx="36" cy="{y + 10}" r="4.5" fill="{t[key]}"/>')
-        s.append(txt(48, y + 14, name, 12.5, t["text"], bold=True))
-        x = 172
-        for item in items:
-            body, w = chip(t, x, y - 2, item, size=11, h=24,
-                           colour=t["text"])
-            s.append(body)
-            x += w + 7
+
+def wrap_tags(items, x0, x_max, size, pad, gap):
+    """Greedy-wrap tag pills into lines that fit the available width."""
+    lines: list[list[tuple[str, float]]] = [[]]
+    x = x0
+    for item in items:
+        w = tw(item, size, bold=True) + pad * 2
+        if lines[-1] and x + w > x_max:
+            lines.append([])
+            x = x0
+        lines[-1].append((item, w))
+        x += w + gap
+    return lines
+
+
+def stack(t):
+    size, pad, gap, pill_h, line_h = 11, 10, 6, 24, 30
+    label_x, tag_x, tag_max = 32, 208, W - 30
+
+    laid = [(name, wrap_tags(items, tag_x, tag_max, size, pad, gap))
+            for name, items in STACK_GROUPS]
+
+    top = 62
+    heights = [max(len(lines) * line_h, line_h) + 12 for _, lines in laid]
+    h = top + sum(heights) + 6
+
+    s = panel(t, h, "Technical stack, grouped by area")
+    s.append(stripe(t, h, t["violet"]))
+    s.append(txt(32, 42, "Tools I build with, and the ideas they go with — "
+                "grouped by where I actually use them.", 12.5, t["muted"]))
+
+    y = top
+    for i, ((name, lines), block) in enumerate(zip(laid, heights)):
+        colour = t["series"][i % len(t["series"])]
+        if i:
+            s.append(f'<path d="M32 {y - 6} H{W - 32}" stroke="{t["rule"]}" '
+                     f'stroke-width="1" opacity="0.5"/>')
+        # Label in text ink, not the series colour -- several slots sit below
+        # 3:1 on the light surface and turn to mush when used as type. The dot
+        # and the pill tint carry the identity instead.
+        s.append(f'<circle cx="36" cy="{y + 12}" r="4.5" fill="{colour}"/>')
+        s.append(txt(48, y + 16, name, 12.5, t["text"], bold=True))
+        for row, line in enumerate(lines):
+            ly = y + row * line_h
+            x = tag_x
+            for item, w in line:
+                s.append(rect(x, ly, w, pill_h, colour, rx=pill_h / 2,
+                              opacity=t["tint"]))
+                s.append(txt(x + w / 2, ly + pill_h / 2 + size * 0.36, item,
+                             size, t["text"], bold=True, anchor="middle"))
+                x += w + gap
+        y += block
     return h, s
 
 
