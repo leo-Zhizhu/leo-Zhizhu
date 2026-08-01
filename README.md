@@ -21,7 +21,7 @@
 <div align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./profile/impact-dark.svg">
-  <img src="./profile/impact-light.svg" width="880" alt="Before-and-after bar chart. City-scale simulation run: 30 hours to 11 minutes, 161x faster. PostGIS spatial query: 2,000 ms to 25 ms, 80x faster. Fleet data uploaded: 100% to 30%, 70% less. Agent context overhead: 10k tokens to about zero per call. Web interaction latency: 140 ms to 40 ms, 3.5x faster. AUV steady-state error: 80% less.">
+  <img src="./profile/impact-light.svg" width="880" alt="Improvement factor per workload on a log scale, largest first. City-scale simulation run, Unity raycasting over Manhattan: 30 hours to 11 minutes, 161x faster. PostGIS spatial query after index and memory retune: 2,000 ms to 25 ms, 80x faster. Agent context overhead per LLM call: 10k tokens to about 300, 33x less. AUV steady-state error, 6-DoF controller: baseline to 20%, 5x less. Web interaction latency, INP in the chat workspace: 140 ms to 40 ms, 3.5x faster. Fleet data uploaded per vehicle per day: 100% to 30%, 3.3x less.">
 </picture>
 </div>
 

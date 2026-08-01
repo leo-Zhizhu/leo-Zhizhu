@@ -17,6 +17,7 @@ page surface) for their own theme. Re-validate before changing them.
 
 from __future__ import annotations
 
+import math
 import os
 import string
 
@@ -205,51 +206,86 @@ def hero(t):
 
 
 def impact(t):
+    """Improvement factor per workload, as a lollipop on a log axis.
+
+    A linear "share of the original" bar cannot carry this data: the range runs
+    from 3.3x to 161x, so the two best results collapse onto the minimum-width
+    floor and the two weakest draw the longest bars -- the chart ends up
+    ranking backwards. Every row shares the same left anchor (1x, the
+    unchanged baseline), so distance travelled along a log axis is the win.
+    Position carries the value here, not length from zero, which is what makes
+    a log scale legitimate for this mark and not for a bar.
+    """
     rows = [
         ("City-scale simulation run", "Unity raycasting, Manhattan",
-         30 * 3600, 669, "30 h", "11 min", "161× faster"),
+         30 * 3600, 669, "30 h", "11 min", "faster"),
         ("PostGIS spatial query", "after index + memory retune",
-         2000, 25, "2,000 ms", "25 ms", "80× faster"),
+         2000, 25, "2,000 ms", "25 ms", "faster"),
         ("Fleet data uploaded", "per vehicle, per day",
-         100, 30, "100%", "30%", "70% less"),
+         100, 30, "100%", "30%", "less"),
         ("Agent context overhead", "per LLM call, tool schemas",
-         10000, 300, "10k tok", "~0", "10k saved"),
+         10000, 300, "10k tok", "~300 tok", "less"),
         ("Web interaction latency", "INP, chat workspace",
-         140, 40, "140 ms", "40 ms", "3.5× faster"),
+         140, 40, "140 ms", "40 ms", "faster"),
         ("AUV steady-state error", "6-DoF controller, pool tests",
-         100, 20, "baseline", "20%", "80% less"),
+         100, 20, "baseline", "20%", "less"),
     ]
-    row_h, top = 50, 92
-    h = top + row_h * len(rows) + 22
-    s = panel(t, h, "Before and after: workloads I made faster or smaller")
+    rows.sort(key=lambda r: r[2] / r[3], reverse=True)
+
+    ax, aw, amax = 262, 300, 200.0          # axis origin, span, right edge (x)
+    span = math.log10(amax)
+
+    def px(factor):
+        return ax + aw * math.log10(max(factor, 1.0)) / span
+
+    row_h, top = 52, 116
+    h = top + row_h * (len(rows) - 1) + 46
+    s = panel(t, h, "Improvement factor per workload, log scale, "
+                    "largest first")
     s.append(stripe(t, h, t["cyan"]))
 
-    s.append(txt(32, 42, "Same workload, before and after the change. "
-                "Shorter is better.", 12.5, t["muted"]))
+    s.append(txt(32, 42, "The same workload before and after my change. "
+                "Farther right is a bigger win.", 12.5, t["muted"]))
+    s.append(txt(32, 62, "Log scale — each gridline is 10× the one before "
+                "it.", 11, t["faint"]))
 
-    # legend -- two series, so identity is never colour-alone
-    lx = W - 32
-    for label, colour in [("after", t["cyan"]), ("before", t["track"])]:
-        wl = tw(label, 11)
-        s.append(txt(lx, 46, label, 11, t["muted"], anchor="end"))
-        s.append(rect(lx - wl - 16, 39, 10, 7, colour, rx=3.5))
-        lx -= wl + 32
+    # axis: baseline at 1x plus decade gridlines, drawn under the marks
+    grid_top, grid_bot = 96, top + row_h * (len(rows) - 1) + 22
+    for factor in (1, 10, 100):
+        gx = px(factor)
+        first = factor == 1
+        s.append(f'<path d="M{gx:.1f} {grid_top} V{grid_bot}" '
+                 f'stroke="{t["rule"] if first else t["track"]}" '
+                 f'stroke-width="1"{"" if first else " opacity=\"0.5\""}/>')
+        s.append(txt(gx, 88, f"{factor}×", 10, t["faint"], bold=first,
+                     anchor="middle"))
 
-    bx, bw = 258, 358
-    for i, (name, ctx, before, after, bl, al, factor) in enumerate(rows):
+    for i, (name, ctx, before, after, bl, al, word) in enumerate(rows):
         y = top + row_h * i
-        s.append(txt(32, y + 6, name, 13, t["text"], bold=True))
-        s.append(txt(32, y + 22, ctx, 10.8, t["faint"]))
-        ratio = max(after / before, 0.0)
-        aw = max(ratio * bw, 7)
-        s.append(rect(bx, y - 6, bw, 9, t["track"], rx=4.5))
-        s.append(rect(bx, y + 9, aw, 9, t["cyan"], rx=4.5))
-        s.append(txt(bx + bw + 16, y + 6, f"{bl} → {al}", 11.5,
-                     t["muted"], mono=True))
-        s.append(txt(W - 32, y + 6, factor, 13.5, t["cyan"], bold=True,
-                     anchor="end"))
+        factor = before / after
+        dot = px(factor)
+
+        s.append(txt(32, y - 3, name, 13, t["text"], bold=True))
+        s.append(txt(32, y + 13, ctx, 10.8, t["faint"]))
+
+        # connector + terminal dot: 1 hue, 2 shades (dumbbell convention)
+        s.append(f'<path d="M{ax} {y + 2} H{dot:.1f}" stroke="{t["cyan"]}" '
+                 f'stroke-width="2.5" opacity="0.42" stroke-linecap="round"/>')
+        s.append(f'<circle cx="{ax}" cy="{y + 2}" r="3.5" '
+                 f'fill="{t["track"]}"/>')
+        s.append(f'<circle cx="{dot:.1f}" cy="{y + 2}" r="6" '
+                 f'fill="{t["cyan"]}" stroke="{t["panel"]}" '
+                 f'stroke-width="2"/>')
+
+        label = f"{factor:.0f}×" if factor >= 10 else f"{factor:.1f}×"
+        s.append(txt(dot + 14, y + 7, label, 15, t["cyan"], bold=True))
+        s.append(txt(dot + 16 + tw(label, 15, bold=True), y + 7, word, 10.5,
+                     t["faint"]))
+        s.append(txt(W - 32, y + 6, f"{bl} → {al}", 11.5, t["muted"],
+                     mono=True, anchor="end"))
+
         if i < len(rows) - 1:
-            s.append(f'<path d="M32 {y + 32} H{W - 32}" stroke="{t["rule"]}" '
+            s.append(f'<path d="M32 {y + 26} H{W - 32}" stroke="{t["rule"]}" '
                      f'stroke-width="1" opacity="0.55"/>')
     return h, s
 
