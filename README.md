@@ -136,7 +136,7 @@
 <div align="center">
 <br>
 
-**Open to internships, collaboration, research, and interesting problems.**
+**Open to internships, coffee chats, collaboration, research, and interesting challenges.**
 
 <sub><i>Software is not just logic — it's a contract with reality.</i></sub>
 
