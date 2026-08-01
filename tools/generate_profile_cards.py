@@ -171,31 +171,38 @@ def tiles(t, y, items, accent):
 # -------------------------------------------------------------------- cards
 
 def hero(t):
-    h = 206
+    # The role line stays domain-level on purpose: no single employer should
+    # define the card. Breadth comes from the contexts line, proof from the
+    # stat column, and specificity from the chips.
+    h = 220
     s = panel(t, h, "Zhu (Leo) Zhi - machine learning and systems engineer")
     s.append(stripe(t, h, t["cyan"]))
 
-    s.append(txt(34, 40, "CS @ CORNELL '28   ·   GPA 4.0 / 4.0", 10.5,
+    s.append(txt(34, 40, "CORNELL CS '28   ·   GPA 4.0 / 4.0", 10.5,
                  t["faint"], bold=True, spacing="1.4"))
-    s.append(txt(32, 80, "Zhu (Leo) Zhi", 38, t["text"], bold=True))
-    s.append(txt(34, 108, "ML Engineering Intern @ Bonsai Robotics",
-                 15.5, t["cyan"], bold=True))
-    s.append(txt(34, 132, "I build the parts that have to keep working "
+    s.append(txt(32, 84, "Zhu (Leo) Zhi", 38, t["text"], bold=True))
+    s.append(txt(34, 112, "Machine Learning Systems · Distributed "
+                 "Infrastructure · AI Agents", 15.5, t["cyan"], bold=True))
+    s.append(txt(34, 138, "I build the parts that have to keep working "
                  "— on a vehicle, in a cluster, inside an agent loop.",
                  12.5, t["muted"]))
+    s.append(txt(34, 160, "Code in production on an autonomy fleet, in a "
+                 "54-node cluster, and in a platform 5,000+ people use.",
+                 11.5, t["faint"]))
 
     x = 34
-    for label, key in [("Machine Learning", "cyan"), ("Distributed Systems",
-                       "amber"), ("AI Agents", "violet"), ("Robotics", "rose")]:
-        body, w = chip(t, x, 150, label, colour=t[key])
+    for label, key in [("On-vehicle inference", "cyan"), ("Kubernetes at "
+                       "scale", "amber"), ("Agent infrastructure", "violet"),
+                       ("Robotics", "rose")]:
+        body, w = chip(t, x, 182, label, colour=t[key])
         s.append(body)
         x += w + 8
 
-    s.append(f'<path d="M574 34 V172" stroke="{t["rule"]}" stroke-width="1"/>')
+    s.append(f'<path d="M574 34 V186" stroke="{t["rule"]}" stroke-width="1"/>')
     stats = [("161×", "faster city-scale simulation", "cyan"),
              ("-70%", "fleet upload volume, shipped", "amber"),
              ("1.6k", "GitHub stars · 5,000+ users", "violet")]
-    y = 66
+    y = 76
     for value, label, key in stats:
         s.append(txt(692, y, value, 23, t[key], bold=True, anchor="end"))
         s.append(txt(706, y - 1, label, 11, t["muted"]))

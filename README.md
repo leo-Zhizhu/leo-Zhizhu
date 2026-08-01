@@ -5,7 +5,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./profile/hero-dark.svg">
-  <img src="./profile/hero-light.svg" width="880" alt="Zhu (Leo) Zhi — CS at Cornell '28, GPA 4.0. ML Engineering Intern at Bonsai Robotics. Machine learning, distributed systems, AI agents, robotics. 161x faster city-scale simulation, 70% less fleet upload volume, 1.6k GitHub stars and 5,000+ users on the agent harness he ships.">
+  <img src="./profile/hero-light.svg" width="880" alt="Zhu (Leo) Zhi — Cornell CS '28, GPA 4.0. Machine learning systems, distributed infrastructure, AI agents. Code in production on an autonomy fleet, in a 54-node cluster, and in a platform 5,000+ people use. On-vehicle inference, Kubernetes at scale, agent infrastructure, robotics. 161x faster city-scale simulation, 70% less fleet upload volume, 1.6k GitHub stars and 5,000+ users.">
 </picture>
 
 <a href="mailto:zhizhu0730@gmail.com"><img src="https://img.shields.io/badge/zhizhu0730@gmail.com-0782a2?style=for-the-badge&logo=gmail&logoColor=white" alt="Email zhizhu0730 at gmail dot com"></a>
