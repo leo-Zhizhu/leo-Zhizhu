@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="250" viewBox="0 0 880 250" role="img" aria-label="Bonsai Robotics on-vehicle data curation pipeline">
+<title>Bonsai Robotics on-vehicle data curation pipeline</title>
+<rect x="0.5" y="0.5" width="879.0" height="249.0" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<clipPath id="cc"><rect x="0" y="0" width="880" height="250" rx="12"/></clipPath><g clip-path="url(#cc)"><rect x="0.0" y="0.0" width="5.0" height="250.0" rx="0" fill="#1596b0"/></g>
+<text x="32.0" y="46.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#1596b0" text-anchor="start">On-Vehicle Data Curation Pipeline</text>
+<text x="32.0" y="68.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#6e7681" text-anchor="start">Bonsai Robotics  ·  C++ / ROS 2  ·  private repo  ·  merged to main, running on every vehicle</text>
+<text x="32.0" y="94.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start">A fleet records far more than anyone can upload, so the vehicle itself decides what is worth sending home.</text>
+<g transform="translate(761.3,31)"><rect x="0.0" y="0.0" width="86.7" height="21.0" rx="10.5" fill="#1596b0"/><text x="43.3" y="14.5" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" font-weight="600" fill="#0d1117" text-anchor="middle">C++ / ROS 2</text></g>
+<g transform="translate(697.1,31)"><rect x="0.0" y="0.0" width="57.2" height="21.0" rx="10.5" fill="#21262d"/><text x="28.6" y="14.5" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" font-weight="600" fill="#9198a1" text-anchor="middle">private</text></g>
+<rect x="106.3" y="125.0" width="111.3" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="106.3" y="125.0" width="111.3" height="2.5" rx="1.2" fill="#1596b0"/>
+<text x="162.0" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">sensor stream</text>
+<text x="162.0" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">MCAP recordings</text>
+<path d="M222.6 148 H230.6" stroke="#6e7681" stroke-width="1.5" fill="none"/><path d="M236.6 148 l-6.5,-4 v8 z" fill="#6e7681"/>
+<rect x="241.6" y="125.0" width="124.4" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="241.6" y="125.0" width="124.4" height="2.5" rx="1.2" fill="#1596b0"/>
+<text x="303.8" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">4 scorers</text>
+<text x="303.8" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">density · semantics</text>
+<path d="M371.0 148 H379.0" stroke="#6e7681" stroke-width="1.5" fill="none"/><path d="M385.0 148 l-6.5,-4 v8 z" fill="#6e7681"/>
+<rect x="390.0" y="125.0" width="113.4" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="390.0" y="125.0" width="113.4" height="2.5" rx="1.2" fill="#1596b0"/>
+<text x="446.7" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">window score</text>
+<text x="446.7" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">anomaly · motion</text>
+<path d="M508.4 148 H516.4" stroke="#6e7681" stroke-width="1.5" fill="none"/><path d="M522.4 148 l-6.5,-4 v8 z" fill="#6e7681"/>
+<rect x="527.4" y="125.0" width="109.0" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="527.4" y="125.0" width="109.0" height="2.5" rx="1.2" fill="#1596b0"/>
+<text x="581.8" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">upload gate</text>
+<text x="581.8" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">race-free finalize</text>
+<path d="M641.3 148 H649.3" stroke="#6e7681" stroke-width="1.5" fill="none"/><path d="M655.3 148 l-6.5,-4 v8 z" fill="#6e7681"/>
+<rect x="660.3" y="125.0" width="113.4" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="660.3" y="125.0" width="113.4" height="2.5" rx="1.2" fill="#1596b0"/>
+<text x="717.0" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">cloud</text>
+<text x="717.0" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">top windows only</text>
+<path d="M28 192 H852" stroke="#30363d" stroke-width="1"/>
+<text x="131.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#1596b0" text-anchor="middle">-70%</text>
+<text x="131.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#9198a1" text-anchor="middle">upload volume</text>
+<text x="337.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#1596b0" text-anchor="middle">8×</text>
+<text x="337.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#9198a1" text-anchor="middle">usable score spread</text>
+<path d="M234.0 202 V242" stroke="#30363d" stroke-width="1"/>
+<text x="543.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#1596b0" text-anchor="middle">&lt;3%</text>
+<text x="543.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#9198a1" text-anchor="middle">latency for a distilled VLM</text>
+<path d="M440.0 202 V242" stroke="#30363d" stroke-width="1"/>
+<text x="749.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#1596b0" text-anchor="middle">287k</text>
+<text x="749.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#9198a1" text-anchor="middle">frames embedded on Ray</text>
+<path d="M646.0 202 V242" stroke="#30363d" stroke-width="1"/>
+</svg>

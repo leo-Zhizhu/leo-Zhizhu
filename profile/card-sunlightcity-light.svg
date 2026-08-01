@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="250" viewBox="0 0 880 250" role="img" aria-label="SunlightCity distributed simulation pipeline">
+<title>SunlightCity distributed simulation pipeline</title>
+<rect x="0.5" y="0.5" width="879.0" height="249.0" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<clipPath id="cc"><rect x="0" y="0" width="880" height="250" rx="12"/></clipPath><g clip-path="url(#cc)"><rect x="0.0" y="0.0" width="5.0" height="250.0" rx="0" fill="#b45309"/></g>
+<text x="32.0" y="46.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#b45309" text-anchor="start">SunlightCity — 7.89B sunlight measurements in 11 minutes</text>
+<text x="32.0" y="68.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#818b98" text-anchor="start">Cornell Ezra Systems  ·  Unity · Kubernetes · PostGIS  ·  simulation infrastructure lead</text>
+<text x="32.0" y="94.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" fill="#1f2328" text-anchor="start">Sun or shadow, at every street position and every minute — answered 7.89 billion times so a router can query it instantly.</text>
+<g transform="translate(754.5,31)"><rect x="0.0" y="0.0" width="93.5" height="21.0" rx="10.5" fill="#b45309"/><text x="46.7" y="14.5" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">161× speedup</text></g>
+<g transform="translate(653.0,31)"><rect x="0.0" y="0.0" width="94.5" height="21.0" rx="10.5" fill="#eaeef2"/><text x="47.3" y="14.5" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" font-weight="600" fill="#59636e" text-anchor="middle">500 GB output</text></g>
+<rect x="108.9" y="125.0" width="110.5" height="46.0" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+<rect x="108.9" y="125.0" width="110.5" height="2.5" rx="1.2" fill="#b45309"/>
+<text x="164.2" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#1f2328" text-anchor="middle">Unity mesh</text>
+<text x="164.2" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#59636e" text-anchor="middle">Manhattan model</text>
+<path d="M224.4 148 H232.4" stroke="#818b98" stroke-width="1.5" fill="none"/><path d="M238.4 148 l-6.5,-4 v8 z" fill="#818b98"/>
+<rect x="243.4" y="125.0" width="112.8" height="46.0" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+<rect x="243.4" y="125.0" width="112.8" height="2.5" rx="1.2" fill="#b45309"/>
+<text x="299.8" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#1f2328" text-anchor="middle">headless build</text>
+<text x="299.8" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#59636e" text-anchor="middle">IL2CPP raycaster</text>
+<path d="M361.3 148 H369.3" stroke="#818b98" stroke-width="1.5" fill="none"/><path d="M375.3 148 l-6.5,-4 v8 z" fill="#818b98"/>
+<rect x="380.3" y="125.0" width="106.1" height="46.0" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+<rect x="380.3" y="125.0" width="106.1" height="2.5" rx="1.2" fill="#b45309"/>
+<text x="433.3" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#1f2328" text-anchor="middle">54 workers</text>
+<text x="433.3" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#59636e" text-anchor="middle">Kubernetes fleet</text>
+<path d="M491.4 148 H499.4" stroke="#818b98" stroke-width="1.5" fill="none"/><path d="M505.4 148 l-6.5,-4 v8 z" fill="#818b98"/>
+<rect x="510.4" y="125.0" width="103.3" height="46.0" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+<rect x="510.4" y="125.0" width="103.3" height="2.5" rx="1.2" fill="#b45309"/>
+<text x="562.0" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#1f2328" text-anchor="middle">9 shards</text>
+<text x="562.0" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#59636e" text-anchor="middle">PostGIS cluster</text>
+<path d="M618.7 148 H626.7" stroke="#818b98" stroke-width="1.5" fill="none"/><path d="M632.7 148 l-6.5,-4 v8 z" fill="#818b98"/>
+<rect x="637.7" y="125.0" width="133.4" height="46.0" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+<rect x="637.7" y="125.0" width="133.4" height="2.5" rx="1.2" fill="#b45309"/>
+<text x="704.4" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#1f2328" text-anchor="middle">11m 09s</text>
+<text x="704.4" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#59636e" text-anchor="middle">inside a 15m deadline</text>
+<path d="M28 192 H852" stroke="#d8dee4" stroke-width="1"/>
+<text x="131.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#b45309" text-anchor="middle">161×</text>
+<text x="131.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#59636e" text-anchor="middle">vs one machine</text>
+<text x="337.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#b45309" text-anchor="middle">16M/s</text>
+<text x="337.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#59636e" text-anchor="middle">rows into Postgres</text>
+<path d="M234.0 202 V242" stroke="#d8dee4" stroke-width="1"/>
+<text x="543.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#b45309" text-anchor="middle">2000→25ms</text>
+<text x="543.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#59636e" text-anchor="middle">spatial queries</text>
+<path d="M440.0 202 V242" stroke="#d8dee4" stroke-width="1"/>
+<text x="749.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#b45309" text-anchor="middle">54 &amp; 9</text>
+<text x="749.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#59636e" text-anchor="middle">sized by a capacity model</text>
+<path d="M646.0 202 V242" stroke="#d8dee4" stroke-width="1"/>
+</svg>

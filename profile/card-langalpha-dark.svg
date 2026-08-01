@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="250" viewBox="0 0 880 250" role="img" aria-label="LangAlpha agent harness architecture">
+<title>LangAlpha agent harness architecture</title>
+<rect x="0.5" y="0.5" width="879.0" height="249.0" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<clipPath id="cc"><rect x="0" y="0" width="880" height="250" rx="12"/></clipPath><g clip-path="url(#cc)"><rect x="0.0" y="0.0" width="5.0" height="250.0" rx="0" fill="#9085e9"/></g>
+<text x="32.0" y="46.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#9085e9" text-anchor="start">LangAlpha — Claude Code for financial markets</text>
+<text x="32.0" y="68.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#6e7681" text-anchor="start">Ginlix AI  ·  Python · LangGraph · Postgres · Redis  ·  full-stack owner, CI/CD to incident response</text>
+<text x="32.0" y="94.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start">Chat rebuilt as a persistent workspace, so research compounds across sessions instead of resetting at every prompt.</text>
+<g transform="translate(774.7,31)"><rect x="0.0" y="0.0" width="73.3" height="21.0" rx="10.5" fill="#9085e9"/><text x="36.6" y="14.5" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" font-weight="600" fill="#0d1117" text-anchor="middle">1.6k stars</text></g>
+<g transform="translate(679.0,31)"><rect x="0.0" y="0.0" width="88.8" height="21.0" rx="10.5" fill="#21262d"/><text x="44.4" y="14.5" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" font-weight="600" fill="#9198a1" text-anchor="middle">5,000+ users</text></g>
+<rect x="104.4" y="125.0" width="122.1" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="104.4" y="125.0" width="122.1" height="2.5" rx="1.2" fill="#9085e9"/>
+<text x="165.4" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">web · slack · cli</text>
+<text x="165.4" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">one workspace</text>
+<path d="M231.5 148 H239.5" stroke="#6e7681" stroke-width="1.5" fill="none"/><path d="M245.5 148 l-6.5,-4 v8 z" fill="#6e7681"/>
+<rect x="250.5" y="125.0" width="139.3" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="250.5" y="125.0" width="139.3" height="2.5" rx="1.2" fill="#9085e9"/>
+<text x="320.1" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">agent core</text>
+<text x="320.1" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">PTC + subagent swarm</text>
+<path d="M394.8 148 H402.8" stroke="#6e7681" stroke-width="1.5" fill="none"/><path d="M408.8 148 l-6.5,-4 v8 z" fill="#6e7681"/>
+<rect x="413.8" y="125.0" width="111.7" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="413.8" y="125.0" width="111.7" height="2.5" rx="1.2" fill="#9085e9"/>
+<text x="469.6" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">sandbox</text>
+<text x="469.6" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">Daytona isolation</text>
+<path d="M530.5 148 H538.5" stroke="#6e7681" stroke-width="1.5" fill="none"/><path d="M544.5 148 l-6.5,-4 v8 z" fill="#6e7681"/>
+<rect x="549.5" y="125.0" width="109.4" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="549.5" y="125.0" width="109.4" height="2.5" rx="1.2" fill="#9085e9"/>
+<text x="604.2" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">durable state</text>
+<text x="604.2" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">Postgres + Redis</text>
+<path d="M663.9 148 H671.9" stroke="#6e7681" stroke-width="1.5" fill="none"/><path d="M677.9 148 l-6.5,-4 v8 z" fill="#6e7681"/>
+<rect x="682.9" y="125.0" width="92.8" height="46.0" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+<rect x="682.9" y="125.0" width="92.8" height="2.5" rx="1.2" fill="#9085e9"/>
+<text x="729.3" y="146.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11.5" font-weight="600" fill="#e6edf3" text-anchor="middle">30+ tools</text>
+<text x="729.3" y="162.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.5" fill="#9198a1" text-anchor="middle">native + MCP</text>
+<path d="M28 192 H852" stroke="#30363d" stroke-width="1"/>
+<text x="131.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#9085e9" text-anchor="middle">-10k</text>
+<text x="131.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#9198a1" text-anchor="middle">tokens per agent call</text>
+<text x="337.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#9085e9" text-anchor="middle">140→40ms</text>
+<text x="337.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#9198a1" text-anchor="middle">interaction latency</text>
+<path d="M234.0 202 V242" stroke="#30363d" stroke-width="1"/>
+<text x="543.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#9085e9" text-anchor="middle">30+</text>
+<text x="543.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#9198a1" text-anchor="middle">tools routed by cost</text>
+<path d="M440.0 202 V242" stroke="#30363d" stroke-width="1"/>
+<text x="749.0" y="218.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="600" fill="#9085e9" text-anchor="middle">1.6k</text>
+<text x="749.0" y="236.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#9198a1" text-anchor="middle">GitHub stars</text>
+<path d="M646.0 202 V242" stroke="#30363d" stroke-width="1"/>
+</svg>

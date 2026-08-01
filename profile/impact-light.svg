@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="414" viewBox="0 0 880 414" role="img" aria-label="Before and after: workloads I made faster or smaller">
+<title>Before and after: workloads I made faster or smaller</title>
+<rect x="0.5" y="0.5" width="879.0" height="413.0" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<clipPath id="cc"><rect x="0" y="0" width="880" height="414" rx="12"/></clipPath><g clip-path="url(#cc)"><rect x="0.0" y="0.0" width="5.0" height="414.0" rx="0" fill="#0782a2"/></g>
+<text x="32.0" y="42.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#59636e" text-anchor="start">Same workload, before and after the change. Shorter is better.</text>
+<text x="848.0" y="46.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#59636e" text-anchor="end">after</text>
+<rect x="810.1" y="39.0" width="10.0" height="7.0" rx="3.5" fill="#0782a2"/>
+<text x="794.1" y="46.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="11" fill="#59636e" text-anchor="end">before</text>
+<rect x="748.0" y="39.0" width="10.0" height="7.0" rx="3.5" fill="#d8dee4"/>
+<text x="32.0" y="98.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328" text-anchor="start">City-scale simulation run</text>
+<text x="32.0" y="114.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#818b98" text-anchor="start">Unity raycasting, Manhattan</text>
+<rect x="258.0" y="86.0" width="358.0" height="9.0" rx="4.5" fill="#d8dee4"/>
+<rect x="258.0" y="101.0" width="7.0" height="9.0" rx="4.5" fill="#0782a2"/>
+<text x="632.0" y="98.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#59636e" text-anchor="start">30 h → 11 min</text>
+<text x="848.0" y="98.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13.5" font-weight="600" fill="#0782a2" text-anchor="end">161× faster</text>
+<path d="M32 124 H848" stroke="#d8dee4" stroke-width="1" opacity="0.55"/>
+<text x="32.0" y="148.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328" text-anchor="start">PostGIS spatial query</text>
+<text x="32.0" y="164.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#818b98" text-anchor="start">after index + memory retune</text>
+<rect x="258.0" y="136.0" width="358.0" height="9.0" rx="4.5" fill="#d8dee4"/>
+<rect x="258.0" y="151.0" width="7.0" height="9.0" rx="4.5" fill="#0782a2"/>
+<text x="632.0" y="148.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#59636e" text-anchor="start">2,000 ms → 25 ms</text>
+<text x="848.0" y="148.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13.5" font-weight="600" fill="#0782a2" text-anchor="end">80× faster</text>
+<path d="M32 174 H848" stroke="#d8dee4" stroke-width="1" opacity="0.55"/>
+<text x="32.0" y="198.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328" text-anchor="start">Fleet data uploaded</text>
+<text x="32.0" y="214.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#818b98" text-anchor="start">per vehicle, per day</text>
+<rect x="258.0" y="186.0" width="358.0" height="9.0" rx="4.5" fill="#d8dee4"/>
+<rect x="258.0" y="201.0" width="107.4" height="9.0" rx="4.5" fill="#0782a2"/>
+<text x="632.0" y="198.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#59636e" text-anchor="start">100% → 30%</text>
+<text x="848.0" y="198.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13.5" font-weight="600" fill="#0782a2" text-anchor="end">70% less</text>
+<path d="M32 224 H848" stroke="#d8dee4" stroke-width="1" opacity="0.55"/>
+<text x="32.0" y="248.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328" text-anchor="start">Agent context overhead</text>
+<text x="32.0" y="264.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#818b98" text-anchor="start">per LLM call, tool schemas</text>
+<rect x="258.0" y="236.0" width="358.0" height="9.0" rx="4.5" fill="#d8dee4"/>
+<rect x="258.0" y="251.0" width="10.7" height="9.0" rx="4.5" fill="#0782a2"/>
+<text x="632.0" y="248.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#59636e" text-anchor="start">10k tok → ~0</text>
+<text x="848.0" y="248.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13.5" font-weight="600" fill="#0782a2" text-anchor="end">10k saved</text>
+<path d="M32 274 H848" stroke="#d8dee4" stroke-width="1" opacity="0.55"/>
+<text x="32.0" y="298.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328" text-anchor="start">Web interaction latency</text>
+<text x="32.0" y="314.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#818b98" text-anchor="start">INP, chat workspace</text>
+<rect x="258.0" y="286.0" width="358.0" height="9.0" rx="4.5" fill="#d8dee4"/>
+<rect x="258.0" y="301.0" width="102.3" height="9.0" rx="4.5" fill="#0782a2"/>
+<text x="632.0" y="298.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#59636e" text-anchor="start">140 ms → 40 ms</text>
+<text x="848.0" y="298.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13.5" font-weight="600" fill="#0782a2" text-anchor="end">3.5× faster</text>
+<path d="M32 324 H848" stroke="#d8dee4" stroke-width="1" opacity="0.55"/>
+<text x="32.0" y="348.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328" text-anchor="start">AUV steady-state error</text>
+<text x="32.0" y="364.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="10.8" fill="#818b98" text-anchor="start">6-DoF controller, pool tests</text>
+<rect x="258.0" y="336.0" width="358.0" height="9.0" rx="4.5" fill="#d8dee4"/>
+<rect x="258.0" y="351.0" width="71.6" height="9.0" rx="4.5" fill="#0782a2"/>
+<text x="632.0" y="348.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#59636e" text-anchor="start">baseline → 20%</text>
+<text x="848.0" y="348.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="13.5" font-weight="600" fill="#0782a2" text-anchor="end">80% less</text>
+</svg>

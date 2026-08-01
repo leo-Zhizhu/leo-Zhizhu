@@ -1,0 +1,86 @@
+name: Refresh profile assets
+
+# One workflow, one job, one push. The previous split (readme-stats.yml +
+# snake.yml) ran on identical triggers and both rewrote README.md and pushed,
+# so concurrent runs raced on the same line and a push could be rejected.
+
+on:
+  schedule:
+    - cron: "0 4 * * *" # midnight US East (EDT/EST)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "tools/**"
+      - ".github/workflows/profile-assets.yml"
+
+concurrency:
+  group: profile-assets
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 10
+    env:
+      TZ: America/New_York
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild the static cards
+        run: python3 tools/generate_profile_cards.py
+
+      - name: Refresh the GitHub stats card
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # The script exits non-zero without writing if the API is unreachable;
+        # restore the committed cards so a failed refresh never lands a broken
+        # card the way the old third-party action did.
+        run: |
+          python3 tools/generate_github_stats.py \
+            || git checkout -- profile/github-light.svg profile/github-dark.svg
+
+      - name: Generate the contribution snake
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/github-contribution-grid-snake.svg
+            assets/github-contribution-grid-snake-dark.svg?palette=github-dark
+
+      - name: Reject any card that rendered an error
+        run: |
+          if grep -rl "Something went wrong" profile/ 2>/dev/null | grep .; then
+            echo "::error::a generated card contains an error message"
+            exit 1
+          fi
+
+      - name: Bump the README timestamp so GitHub re-fetches the cards
+        run: |
+          sed -i "s/profile cards updated: [0-9-]*/profile cards updated: $(date +%Y-%m-%d)/" README.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile assets README.md
+          if git diff --staged --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -m "Refresh profile assets (US East Time)"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin main; then
+              exit 0
+            fi
+            echo "push attempt $attempt failed, retrying"
+            sleep 5
+          done
+          exit 1
