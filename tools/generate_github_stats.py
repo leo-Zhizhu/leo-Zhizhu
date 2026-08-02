@@ -26,7 +26,7 @@ import sys
 import urllib.error
 import urllib.request
 
-from generate_profile_cards import (T, W, dither, dither_ramp, eyebrow,
+from generate_profile_cards import (T, W, card_title, dither, dither_ramp,
                                     panel, rect, stripe, tiles, tw, txt,
                                     write_card)
 
@@ -128,28 +128,28 @@ def human(n: int) -> str:
 
 
 def card(data):
-    h = 232
+    h = 238
     s = panel(h, "GitHub at a glance")
     s.append(stripe(h))
 
-    s.append(eyebrow(32, 40, "github"))
-    s.append(txt(32, 62, "Public repositories I own, plus the org repo I ship "
+    s.append(card_title("GitHub at a glance"))
+    s.append(txt(32, 66, "Public repositories I own, plus the org repo I ship "
                 "day to day.", 12.5, T["muted"]))
 
-    s.extend(tiles(102, [
+    s.extend(tiles(108, [
         (human(data["stars"]), "stars earned"),
         (str(data["repos"]), "public repos"),
         (str(data["followers"]), "followers"),
         (str(data["distinct_languages"]), "languages in use"),
     ]))
 
-    s.append(dither_ramp(28, 140, W - 56, steps=4, step_h=2, top=8))
-    s.append(txt(32, 172, "language mix, by bytes of code", 10, T["faint"],
+    s.append(dither_ramp(28, 146, W - 56, steps=4, step_h=2, top=8))
+    s.append(txt(32, 178, "language mix, by bytes of code", 10, T["faint"],
                  mono=True))
 
     # Stacked bar. A 2px surface gap between segments keeps them separable
     # without a stroke, on top of the density difference.
-    bar_y, bar_h, x0, span = 182, 14, 32, W - 64
+    bar_y, bar_h, x0, span = 188, 14, 32, W - 64
     x = x0
     for i, (_, share) in enumerate(data["languages"]):
         seg = max(span * share - 2, 3)
@@ -161,10 +161,10 @@ def card(data):
     lx = 32
     for i, (name, share) in enumerate(data["languages"]):
         label = f"{name} {share * 100:.0f}%"
-        s.append(rect(lx, 208, 9, 9, T["bg"]))
-        s.append(rect(lx, 208, 9, 9, series_fill(i)))
-        s.append(rect(lx, 208, 9, 9, "none", stroke=T["border"]))
-        s.append(txt(lx + 15, 216, label, 10, T["muted"], mono=True))
+        s.append(rect(lx, 214, 9, 9, T["bg"]))
+        s.append(rect(lx, 214, 9, 9, series_fill(i)))
+        s.append(rect(lx, 214, 9, 9, "none", stroke=T["border"]))
+        s.append(txt(lx + 15, 222, label, 10, T["muted"], mono=True))
         lx += 15 + tw(label, 10) + 18
     return h, s
 

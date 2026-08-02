@@ -245,12 +245,6 @@ def overlay(h):
     return ""
 
 
-def eyebrow(x, y, label):
-    """Small bracketed section marker."""
-    return txt(x, y, f"[ {label.upper()} ]", 10, T["faint"], bold=True,
-               mono=True, spacing="1.2")
-
-
 def chip(x, y, label, size=11, pad=10, h=21, fill=None, colour=None,
          border=None):
     """Squared-off tag. Returns (svg, width)."""
@@ -408,25 +402,25 @@ def impact():
     def px(factor):
         return ax + aw * math.log10(max(factor, 1.0)) / span
 
-    row_h, top = 52, 116
+    row_h, top = 52, 122
     h = top + row_h * (len(rows) - 1) + 46
     s = panel(h, "Improvement factor per workload, log scale, largest first")
     s.append(stripe(h))
 
-    s.append(eyebrow(32, 40, "before / after"))
-    s.append(txt(32, 62, "The same workload before and after my change. "
+    s.append(card_title("Numbers I moved"))
+    s.append(txt(32, 66, "The same workload before and after my change. "
                 "Farther right is a bigger win.", 12.5, T["muted"]))
-    s.append(txt(32, 80, "Log scale — each gridline is 10× the one before it.",
+    s.append(txt(32, 84, "Log scale — each gridline is 10× the one before it.",
                  10.5, T["faint"], mono=True))
 
     # axis: baseline at 1x plus decade gridlines, drawn under the marks
-    grid_top, grid_bot = 100, top + row_h * (len(rows) - 1) + 22
+    grid_top, grid_bot = 106, top + row_h * (len(rows) - 1) + 22
     for factor in (1, 10, 100):
         gx = px(factor)
         first = factor == 1
         s.append(rect(gx, grid_top, 1, grid_bot - grid_top,
                       T["faint"] if first else dither(6, "d")))
-        s.append(txt(gx, 94, f"{factor}×", 9.5, T["faint"], bold=first,
+        s.append(txt(gx, 100, f"{factor}×", 9.5, T["faint"], bold=first,
                      anchor="middle", mono=True))
 
     for i, (name, ctx, before, after, bl, al, word) in enumerate(rows):
@@ -457,15 +451,17 @@ def impact():
     return h, s
 
 
-def project(title, meta, hook, badges, nodes, stats, label):
-    h = 250
+def project(role, title, meta, hook, badges, nodes, stats, label):
+    h = 268
     s = panel(h, label)
     s.append(stripe(h))
 
-    s.append(txt(32, 46, title.upper(), 16, T["text"], bold=True, mono=True,
+    s.append(txt(32, 40, role.upper(), 10.5, T["accent_text"], bold=True,
+                 mono=True, spacing="1.6"))
+    s.append(txt(32, 66, title.upper(), 16, T["text"], bold=True, mono=True,
                  spacing="0.8"))
-    s.append(txt(32, 68, meta, 10.5, T["faint"], mono=True))
-    s.append(txt(32, 94, hook, 12.5, T["muted"]))
+    s.append(txt(32, 88, meta, 10.5, T["faint"], mono=True))
+    s.append(txt(32, 114, hook, 12.5, T["muted"]))
 
     x = W - 32
     for text_, filled in reversed(badges):
@@ -474,28 +470,30 @@ def project(title, meta, hook, badges, nodes, stats, label):
                        colour="#ffffff" if filled else T["muted"],
                        border=T["accent"] if filled else T["border"])
         x -= w
-        s.append(f'<g transform="translate({x:.1f},31)">{body}</g>')
+        s.append(f'<g transform="translate({x:.1f},51)">{body}</g>')
         x -= 7
 
-    s.extend(flow(148, nodes))
-    s.append(dither_ramp(28, 186, W - 56, steps=4, step_h=2, top=8))
-    s.extend(tiles(220, stats))
+    s.extend(flow(166, nodes))
+    s.append(dither_ramp(28, 204, W - 56, steps=4, step_h=2, top=8))
+    s.extend(tiles(238, stats))
     return h, s
 
 
 def bonsai():
     """Custom card: v2 closes a loop through an off-vehicle server, so the
     plain left-to-right pipeline the other two cards use does not fit."""
-    h = 306
+    h = 324
     s = panel(h, "Bonsai Robotics on-vehicle data curation pipeline, v2")
     s.append(stripe(h))
 
-    s.append(txt(32, 46, "ON-VEHICLE DATA CURATION PIPELINE", 16, T["text"],
+    s.append(txt(32, 40, "BONSAI ROBOTICS · MACHINE LEARNING ENGINEERING "
+                "INTERN", 10.5, T["accent_text"], bold=True, mono=True,
+                spacing="1.6"))
+    s.append(txt(32, 66, "ON-VEHICLE DATA CURATION PIPELINE", 16, T["text"],
                  bold=True, mono=True, spacing="0.8"))
-    s.append(txt(32, 68, "Bonsai Robotics · C++ / ROS 2 · private repo · "
-                "merged to main, running on every vehicle", 10.5, T["faint"],
-                mono=True))
-    s.append(txt(32, 94, "A fleet records far more than anyone can upload, so "
+    s.append(txt(32, 88, "C++ / ROS 2 · private repo · merged to main, "
+                "running on every vehicle", 10.5, T["faint"], mono=True))
+    s.append(txt(32, 114, "A fleet records far more than anyone can upload, so "
                 "the vehicle itself decides what is worth sending home.", 12.5,
                 T["muted"]))
 
@@ -507,7 +505,7 @@ def bonsai():
                        colour="#ffffff" if filled else T["muted"],
                        border=T["accent"] if filled else T["border"])
         x -= w
-        s.append(f'<g transform="translate({x:.1f},31)">{body}</g>')
+        s.append(f'<g transform="translate({x:.1f},51)">{body}</g>')
         x -= 7
 
     nodes = [("sensor stream", "MCAP recordings"),
@@ -515,7 +513,7 @@ def bonsai():
              ("window score", "distance to vectors"),
              ("upload gate", "race-free finalize"),
              ("cloud", "top windows only")]
-    flow_cy = 202
+    flow_cy = 220
     placed = layout_flow(nodes)
     s.extend(flow(flow_cy, nodes))
 
@@ -523,7 +521,7 @@ def bonsai():
     # refreshes the characteristic vectors each vehicle scores against.
     score_x, score_w = placed[2]
     cloud_x, cloud_w = placed[4]
-    srv_cy = 133
+    srv_cy = 151
     s.append(node_box(score_x, srv_cy, cloud_x + cloud_w - score_x,
                       "remote fleet server",
                       "periodic pass over the full dataset", bh=42,
@@ -536,8 +534,8 @@ def bonsai():
     s.append(varrow(cloud_x + cloud_w / 2, flow_cy - 23, srv_cy + 21,
                     "uploaded windows"))
 
-    s.append(dither_ramp(28, 242, W - 56, steps=4, step_h=2, top=8))
-    s.extend(tiles(276, [
+    s.append(dither_ramp(28, 260, W - 56, steps=4, step_h=2, top=8))
+    s.extend(tiles(294, [
         ("-70%", "upload volume"), ("8×", "usable score spread"),
         ("<3%", "latency for a distilled VLM"),
         ("287k", "frames embedded on Ray")]))
@@ -546,6 +544,7 @@ def bonsai():
 
 def langalpha():
     return project(
+        "Ginlix AI · Full-Stack Software Engineer",
         "LangAlpha — Claude Code for financial markets",
         "Ginlix AI · Python · LangGraph · Postgres · Redis · full-stack "
         "owner, CI/CD to incident response",
@@ -564,6 +563,7 @@ def langalpha():
 
 def sunlight():
     return project(
+        "Cornell Ezra Systems · Simulation Infrastructure Lead",
         "SunlightCity — 7.89B measurements in 11 minutes",
         "Cornell Ezra Systems · Unity · Kubernetes · PostGIS · "
         "simulation infrastructure lead",
@@ -628,6 +628,27 @@ STACK_GROUPS = [
 ]
 
 
+def wrap_text(text, max_w, size, bold=False, mono=False):
+    """Greedy word-wrap to a pixel width."""
+    lines, cur = [], ""
+    for word in text.split():
+        trial = f"{cur} {word}".strip()
+        if cur and tw(trial, size, bold, mono) > max_w:
+            lines.append(cur)
+            cur = word
+        else:
+            cur = trial
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def card_title(title, y=44):
+    """The heading a markdown `##` used to carry, set in the card instead."""
+    return txt(32, y, title.upper(), 15, T["text"], bold=True, mono=True,
+               spacing="1.6")
+
+
 def wrap_tags(items, x0, x_max, size, pad, gap):
     """Greedy-wrap tag pills into lines that fit the available width."""
     lines: list[list[tuple[str, float]]] = [[]]
@@ -649,14 +670,14 @@ def stack():
     laid = [(name, wrap_tags(items, tag_x, tag_max, size, pad, gap))
             for name, items in STACK_GROUPS]
 
-    top = 74
+    top = 84
     heights = [max(len(lines) * line_h, line_h) + 12 for _, lines in laid]
     h = top + sum(heights) + 6
 
     s = panel(h, "Technical stack, grouped by area")
     s.append(stripe(h))
-    s.append(eyebrow(32, 40, "stack"))
-    s.append(txt(32, 60, "Tools I build with, and the ideas they go with — "
+    s.append(card_title("Stack"))
+    s.append(txt(32, 66, "Tools I build with, and the ideas they go with — "
                 "grouped by where I actually use them.", 12.5, T["muted"]))
 
     y = top
@@ -679,6 +700,110 @@ def stack():
     return h, s
 
 
+# The two markdown tables, rebuilt as cards so the page stops switching
+# between GitHub's table styling and this one. Repo links stay in the README
+# underneath -- an image cannot carry a hyperlink.
+SHELF = [
+    ("GroceryManager", "Spring Boot · React · AWS App Runner",
+     "Grocery list service with session auth, scaling horizontally without "
+     "instance pinning.",
+     "Search moved to Elasticsearch: ~400 ms faster and typo-tolerant, "
+     "replacing SQL that degraded as the catalog grew."),
+    ("Pixel Social", "React · Go · Elasticsearch · DALL·E 3",
+     "Social platform for creating and sharing images and video.",
+     "Go backend over an Elasticsearch index, with generative image creation "
+     "inside the upload flow."),
+    ("PaperChat", "Node.js · React · LangChain · MCP",
+     "RAG and web-search chat over your own PDFs, with voice I/O.",
+     "Retrieval and live search share one answer path, so citations stay "
+     "attached to what was actually read."),
+    ("MiniSpotify", "Kotlin · ExoPlayer · Jetpack Compose",
+     "Android music client with offline-tolerant playback.",
+     "Room + Kotlin Flows stale-while-revalidate cache: ~80% faster "
+     "returning-user load. Backoff cut failed requests 25%."),
+    ("Cornell AUV", "ROS 2 · YOLOv7 · control",
+     "Autonomous underwater vehicle — perception, control, mission stack.",
+     "Fit nonlinear models to 6-DoF pool-test data to find controller "
+     "parameters hand-tuning missed: 80% less steady-state error."),
+]
+
+
+def shelf():
+    col2, col3 = 292, 566
+    w2, w3 = 250, W - col3 - 32
+    rows = [(name, tech, wrap_text(what, w2, 10.5, mono=True),
+             wrap_text(note, w3, 10.5, mono=True))
+            for name, tech, what, note in SHELF]
+    heights = [max(len(a), len(b)) * 15 + 30 for _, _, a, b in rows]
+
+    top = 92
+    h = top + sum(heights) + 8
+    s = panel(h, "Other projects worth a look")
+    s.append(stripe(h))
+    s.append(card_title("Also on the shelf"))
+    s.append(txt(32, 66, "Smaller builds, each one solving a problem the "
+                "obvious approach could not.", 12.5, T["muted"]))
+
+    y = top
+    for i, ((name, tech, what, note), block) in enumerate(zip(rows, heights)):
+        if i:
+            s.append(dither_rule(32, y - 12, W - 64, level=4))
+        s.append(txt(32, y + 4, name, 12.5, T["accent_text"], bold=True,
+                     mono=True))
+        s.append(txt(32, y + 20, tech, 9.5, T["faint"], mono=True))
+        for j, line in enumerate(what):
+            s.append(txt(col2, y + 4 + j * 15, line, 10.5, T["muted"],
+                         mono=True))
+        for j, line in enumerate(note):
+            s.append(txt(col3, y + 4 + j * 15, line, 10.5, T["muted"],
+                         mono=True))
+        y += block
+    return h, s
+
+
+PRINCIPLES = [
+    ("Tradeoffs, not perfect solutions",
+     "Clarity over cleverness · observability over magic · iteration over "
+     "over-design · user needs over technical ego."),
+    ("The real world is the test",
+     "A feature is cheap. A feature that holds under load, bad networks and "
+     "odd inputs is the job."),
+    ("Humans stay in the loop",
+     "The user should understand why the system produced an answer, not just "
+     "what the answer was."),
+    ("Currently learning",
+     "Reliable agent orchestration · AI infrastructure · robotics control "
+     "powered by ML · system design at scale."),
+]
+
+
+def principles():
+    col, wtext = 300, W - 300 - 32
+    rows = [(label, wrap_text(body, wtext, 11, mono=True))
+            for label, body in PRINCIPLES]
+    heights = [max(len(b), 1) * 16 + 26 for _, b in rows]
+
+    top = 92
+    h = top + sum(heights) + 8
+    s = panel(h, "How I think about the work")
+    s.append(stripe(h))
+    s.append(card_title("How I think about the work"))
+    s.append(txt(32, 66, "The part of the job that does not show up in a "
+                "stack list.", 12.5, T["muted"]))
+
+    y = top
+    for i, ((label, body), block) in enumerate(zip(rows, heights)):
+        if i:
+            s.append(dither_rule(32, y - 12, W - 64, level=4))
+        s.append(txt(32, y + 4, f"{i + 1:02d}", 10, T["faint"], bold=True,
+                     mono=True))
+        s.append(txt(58, y + 4, label, 11.5, T["text"], bold=True, mono=True))
+        for j, line in enumerate(body):
+            s.append(txt(col, y + 4 + j * 16, line, 11, T["muted"], mono=True))
+        y += block
+    return h, s
+
+
 CARDS = {
     "hero": hero,
     "impact": impact,
@@ -686,6 +811,8 @@ CARDS = {
     "card-langalpha": langalpha,
     "card-sunlightcity": sunlight,
     "stack": stack,
+    "shelf": shelf,
+    "principles": principles,
 }
 
 
