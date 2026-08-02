@@ -41,9 +41,10 @@ T = {
     "border": "#333333",
     "rule": "#333333",
     "track": "#333333",
-    "faint": "#585858",     # hairlines and decoration
-    "muted": "#8b8b8b",     # body text
-    "text": "#e8e8e8",      # headings
+    "faint": "#585858",     # hairlines and decoration ONLY, never type
+    "dim": "#8b8b8b",       # small secondary type -- 5.5:1
+    "muted": "#b4b4b4",     # body type -- 8.9:1
+    "text": "#e8e8e8",      # headings -- 15.3:1
     "accent": "#2563eb",    # fills, bars, large numerals
     "accent_text": "#3b82f6",  # the same blue, lifted for small type
 }
@@ -139,6 +140,49 @@ def dither_ramp(x, y, w, steps=4, step_h=3, ink="d", top=10):
     return "".join(out)
 
 
+def grid_field(x, y, w, h, step=26, colour=None, opacity=0.5):
+    """Semi-transparent graph-paper rule. Sits under the content."""
+    c = colour or T["border"]
+    lines = "".join(
+        f'<path d="M{x + i * step:.1f} {y} V{y + h}"/>'
+        for i in range(int(w // step) + 1))
+    lines += "".join(
+        f'<path d="M{x} {y + j * step:.1f} H{x + w}"/>'
+        for j in range(int(h // step) + 1))
+    return (f'<g stroke="{c}" stroke-width="1" fill="none" '
+            f'opacity="{opacity}">{lines}</g>')
+
+
+def dot_field(x, y, w, h, seed, count=380, opacity=0.55):
+    """Scattered point noise. Deterministic, so it does not churn the diff."""
+    rnd = random.Random(seed)
+    dots = []
+    for _ in range(count):
+        dx = x + rnd.random() * w
+        dy = y + rnd.random() * h
+        r, c = rnd.choice(((1.0, T["border"]), (1.0, T["faint"]),
+                           (1.4, T["border"]), (1.0, T["accent"])))
+        dots.append(f'<circle cx="{dx:.1f}" cy="{dy:.1f}" r="{r}" '
+                    f'fill="{c}"/>')
+    return f'<g opacity="{opacity}">{"".join(dots)}</g>'
+
+
+def backdrop(h, seed, grid=None, dots=0, rain=0.0):
+    """Compose the under-layer. Grid and dots are safe anywhere -- content
+    draws opaquely on top. Rain is masked to the card's outer ring, but on a
+    card whose copy reaches the edges even that intrudes, so `rain` is a
+    strength: full on the hero, a whisper on the dense cards."""
+    out = ""
+    if grid:
+        out += grid_field(0, 0, W, h, step=grid)
+    if dots:
+        out += dot_field(0, 0, W, h, seed, count=dots)
+    if rain:
+        out += (f'<g mask="url(#rainmask)" opacity="{rain}">'
+                f'{ascii_rain(0, 0, W, h, seed)}</g>')
+    return out
+
+
 RAIN_CHARS = ("01<>/\\|=+*#%&$@~^:;.-_[]{}()"
               "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789")
 
@@ -175,7 +219,7 @@ def ascii_rain(x, y, w, h, seed, col_w=11, line_h=13):
 
 # -------------------------------------------------------------------- frame
 
-def panel(h, title, rain=None):
+def panel(h, title, under=None):
     """Card shell: surface, hairline border, corner brackets, optional rain.
 
     Returns the opening fragments; overlay() closes the look on top.
@@ -207,9 +251,8 @@ def panel(h, title, rain=None):
         defs,
         rect(0, 0, W, h, T["panel"], rx=3),
     ]
-    if rain:
-        parts.append(f'<g clip-path="url(#card)" mask="url(#rainmask)" '
-                     f'opacity="0.85">{rain}</g>')
+    if under:
+        parts.append(f'<g clip-path="url(#card)">{under}</g>')
     parts.append(rect(0.5, 0.5, W - 1, h - 1, "none", rx=3,
                       stroke=T["border"]))
     parts.append(corners(h))
@@ -272,7 +315,7 @@ def varrow(x, y1, y2, label=None):
            f'<path d="M{x:.1f} {y2} l-3.5,{-7 if down else 7} h7 z" '
            f'fill="{T["faint"]}"/>')
     if label:
-        out += txt(x + 9, (y1 + y2) / 2 + 3.5, label, 9.5, T["faint"],
+        out += txt(x + 9, (y1 + y2) / 2 + 3.5, label, 9.5, T["dim"],
                    mono=True)
     return out
 
@@ -340,11 +383,11 @@ def hero():
     cx = W / 2
     s = panel(h, "Zhu (Leo) Zhi - software, machine learning and "
                  "robotics engineer",
-              rain=ascii_rain(0, 0, W, h, seed=7301))
+              under=backdrop(h, 7301, dots=300, rain=1.0))
     s.append(stripe(h))
 
     s.append(txt(cx, 46, "CORNELL CS '28   ·   GPA 4.0 / 4.0", 10.5,
-                 T["faint"], bold=True, anchor="middle", mono=True,
+                 T["dim"], bold=True, anchor="middle", mono=True,
                  spacing="1.6"))
     s.append(txt(cx, 92, "Zhu (Leo) Zhi", 40, T["text"], bold=True,
                  anchor="middle"))
@@ -404,14 +447,16 @@ def impact():
 
     row_h, top = 52, 122
     h = top + row_h * (len(rows) - 1) + 46
-    s = panel(h, "Improvement factor per workload, log scale, largest first")
+    # graph paper suits a chart; no rain, the plot area is already busy
+    s = panel(h, "Improvement factor per workload, log scale, largest first",
+              under=backdrop(h, 1141, grid=26, dots=200))
     s.append(stripe(h))
 
     s.append(card_title("Numbers I moved"))
     s.append(txt(32, 66, "The same workload before and after my change. "
                 "Farther right is a bigger win.", 12.5, T["muted"]))
     s.append(txt(32, 84, "Log scale — each gridline is 10× the one before it.",
-                 10.5, T["faint"], mono=True))
+                 10.5, T["dim"], mono=True))
 
     # axis: baseline at 1x plus decade gridlines, drawn under the marks
     grid_top, grid_bot = 106, top + row_h * (len(rows) - 1) + 22
@@ -420,7 +465,7 @@ def impact():
         first = factor == 1
         s.append(rect(gx, grid_top, 1, grid_bot - grid_top,
                       T["faint"] if first else dither(6, "d")))
-        s.append(txt(gx, 100, f"{factor}×", 9.5, T["faint"], bold=first,
+        s.append(txt(gx, 100, f"{factor}×", 9.5, T["dim"], bold=first,
                      anchor="middle", mono=True))
 
     for i, (name, ctx, before, after, bl, al, word) in enumerate(rows):
@@ -429,7 +474,7 @@ def impact():
         dot = px(factor)
 
         s.append(txt(32, y - 3, name, 12.5, T["text"], bold=True))
-        s.append(txt(32, y + 13, ctx, 10, T["faint"], mono=True))
+        s.append(txt(32, y + 13, ctx, 10, T["dim"], mono=True))
 
         # connector + terminal dot: the run is dithered, the head is solid
         s.append(rect(ax, y, max(dot - ax, 1), 4, dither(10)))
@@ -442,7 +487,7 @@ def impact():
         s.append(txt(dot + 14, y + 7, label, 15, T["accent_text"], bold=True,
                      mono=True))
         s.append(txt(dot + 18 + tw(label, 15, bold=True), y + 7, word, 10,
-                     T["faint"], mono=True))
+                     T["dim"], mono=True))
         s.append(txt(W - 32, y + 6, f"{bl} → {al}", 11, T["muted"],
                      mono=True, anchor="end"))
 
@@ -451,16 +496,17 @@ def impact():
     return h, s
 
 
-def project(role, title, meta, hook, badges, nodes, stats, label):
+def project(role, title, meta, hook, badges, nodes, stats, label, seed=0):
     h = 268
-    s = panel(h, label)
+    s = panel(h, label, under=backdrop(h, seed, grid=30, dots=300,
+                                      rain=0.30))
     s.append(stripe(h))
 
     s.append(txt(32, 40, role.upper(), 10.5, T["accent_text"], bold=True,
                  mono=True, spacing="1.6"))
     s.append(txt(32, 66, title.upper(), 16, T["text"], bold=True, mono=True,
                  spacing="0.8"))
-    s.append(txt(32, 88, meta, 10.5, T["faint"], mono=True))
+    s.append(txt(32, 88, meta, 10.5, T["dim"], mono=True))
     s.append(txt(32, 114, hook, 12.5, T["muted"]))
 
     x = W - 32
@@ -483,7 +529,8 @@ def bonsai():
     """Custom card: v2 closes a loop through an off-vehicle server, so the
     plain left-to-right pipeline the other two cards use does not fit."""
     h = 324
-    s = panel(h, "Bonsai Robotics on-vehicle data curation pipeline, v2")
+    s = panel(h, "Bonsai Robotics on-vehicle data curation pipeline, v2",
+              under=backdrop(h, 2207, grid=30, dots=340, rain=0.28))
     s.append(stripe(h))
 
     s.append(txt(32, 40, "BONSAI ROBOTICS · MACHINE LEARNING ENGINEERING "
@@ -492,7 +539,7 @@ def bonsai():
     s.append(txt(32, 66, "ON-VEHICLE DATA CURATION PIPELINE", 16, T["text"],
                  bold=True, mono=True, spacing="0.8"))
     s.append(txt(32, 88, "C++ / ROS 2 · private repo · merged to main, "
-                "running on every vehicle", 10.5, T["faint"], mono=True))
+                "running on every vehicle", 10.5, T["dim"], mono=True))
     s.append(txt(32, 114, "A fleet records far more than anyone can upload, so "
                 "the vehicle itself decides what is worth sending home.", 12.5,
                 T["muted"]))
@@ -526,7 +573,7 @@ def bonsai():
                       "remote fleet server",
                       "periodic pass over the full dataset", bh=42,
                       dashed=True))
-    s.append(txt(score_x - 12, srv_cy + 4, "off-vehicle", 9.5, T["faint"],
+    s.append(txt(score_x - 12, srv_cy + 4, "off-vehicle", 9.5, T["dim"],
                  anchor="end", mono=True))
 
     s.append(varrow(score_x + score_w / 2, srv_cy + 21, flow_cy - 23,
@@ -558,7 +605,7 @@ def langalpha():
          ("30+ tools", "native + MCP")],
         [("-10k", "tokens per agent call"), ("140→40ms", "interaction latency"),
          ("30+", "tools routed by cost"), ("1.6k", "GitHub stars")],
-        "LangAlpha agent harness architecture")
+        "LangAlpha agent harness architecture", seed=3391)
 
 
 def sunlight():
@@ -578,7 +625,7 @@ def sunlight():
         [("161×", "vs one machine"), ("16M/s", "rows into Postgres"),
          ("2000→25ms", "spatial queries"),
          ("54 & 9", "sized by a capacity model")],
-        "SunlightCity distributed simulation pipeline")
+        "SunlightCity distributed simulation pipeline", seed=4472)
 
 
 # Each group is (short label, [tools first, then the concepts they go with]).
@@ -674,7 +721,8 @@ def stack():
     heights = [max(len(lines) * line_h, line_h) + 12 for _, lines in laid]
     h = top + sum(heights) + 6
 
-    s = panel(h, "Technical stack, grouped by area")
+    s = panel(h, "Technical stack, grouped by area",
+              under=backdrop(h, 5510, grid=30, dots=420))
     s.append(stripe(h))
     s.append(card_title("Stack"))
     s.append(txt(32, 66, "Tools I build with, and the ideas they go with — "
@@ -738,7 +786,8 @@ def shelf():
 
     top = 92
     h = top + sum(heights) + 8
-    s = panel(h, "Other projects worth a look")
+    s = panel(h, "Other projects worth a look",
+              under=backdrop(h, 8813, dots=380, rain=0.34))
     s.append(stripe(h))
     s.append(card_title("Also on the shelf"))
     s.append(txt(32, 66, "Smaller builds, each one solving a problem the "
@@ -750,7 +799,7 @@ def shelf():
             s.append(dither_rule(32, y - 12, W - 64, level=4))
         s.append(txt(32, y + 4, name, 12.5, T["accent_text"], bold=True,
                      mono=True))
-        s.append(txt(32, y + 20, tech, 9.5, T["faint"], mono=True))
+        s.append(txt(32, y + 20, tech, 9.5, T["dim"], mono=True))
         for j, line in enumerate(what):
             s.append(txt(col2, y + 4 + j * 15, line, 10.5, T["muted"],
                          mono=True))
@@ -785,7 +834,8 @@ def principles():
 
     top = 92
     h = top + sum(heights) + 8
-    s = panel(h, "How I think about the work")
+    s = panel(h, "How I think about the work",
+              under=backdrop(h, 6604, grid=26, dots=240))
     s.append(stripe(h))
     s.append(card_title("How I think about the work"))
     s.append(txt(32, 66, "The part of the job that does not show up in a "
@@ -795,7 +845,7 @@ def principles():
     for i, ((label, body), block) in enumerate(zip(rows, heights)):
         if i:
             s.append(dither_rule(32, y - 12, W - 64, level=4))
-        s.append(txt(32, y + 4, f"{i + 1:02d}", 10, T["faint"], bold=True,
+        s.append(txt(32, y + 4, f"{i + 1:02d}", 10, T["dim"], bold=True,
                      mono=True))
         s.append(txt(58, y + 4, label, 11.5, T["text"], bold=True, mono=True))
         for j, line in enumerate(body):

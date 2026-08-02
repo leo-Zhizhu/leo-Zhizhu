@@ -65,7 +65,7 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            assets/snake.svg?color_snake=%232563eb&color_dots=%23121212,%23333333,%23585858,%238b8b8b,%233b82f6
+            assets/snake.svg?color_snake=%23e8e8e8&color_dots=%231e1e1e,%231b3f8f,%232563eb,%233b82f6,%238ab4fa
 
       - name: Verify every card rendered
         run: |

@@ -5,9 +5,9 @@
 
 <img src="./profile/hero.png" width="880" alt="Zhu (Leo) Zhi — Cornell CS '28, GPA 4.0 / 4.0. Software Engineer, Machine Learning Engineer, Robotics Engineer. However the technical landscape shifts, engineering keeps returning to one origin: making things that solve real problems — with a coherent mind and a practice that never stops improving.">
 
-<a href="mailto:zhizhu0730@gmail.com"><img src="https://img.shields.io/badge/zhizhu0730@gmail.com-2563eb?style=flat-square&logo=gmail&logoColor=white&labelColor=121212" alt="Email zhizhu0730 at gmail dot com"></a>
-<a href="mailto:zz766@cornell.edu"><img src="https://img.shields.io/badge/zz766@cornell.edu-333333?style=flat-square&logo=maildotru&logoColor=8b8b8b&labelColor=121212" alt="Email zz766 at cornell dot edu"></a>
-<a href="https://linkedin.com/in/zhu-zhi-506499376"><img src="https://img.shields.io/badge/LinkedIn-333333?style=flat-square&logo=linkedin&logoColor=8b8b8b&labelColor=121212" alt="LinkedIn"></a>
+<a href="mailto:zhizhu0730@gmail.com"><img src="https://img.shields.io/badge/Email-zhizhu0730@gmail.com-2563eb?style=flat-square&logo=gmail&logoColor=ffffff&labelColor=121212" alt="Email zhizhu0730 at gmail dot com"></a>
+<a href="mailto:zz766@cornell.edu"><img src="https://img.shields.io/badge/Cornell-zz766@cornell.edu-333333?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2I0YjRiNCIgZD0iTTEyIDMgMSA5bDExIDYgOS00LjkxVjE3aDJWOUwxMiAzek01IDEzLjE4djRMMTIgMjFsNy0zLjgydi00TDEyIDE3bC03LTMuODJ6Ii8%2BPC9zdmc%2B&labelColor=121212" alt="Cornell email zz766 at cornell dot edu"></a>
+<a href="https://linkedin.com/in/zhu-zhi-506499376"><img src="https://img.shields.io/badge/LinkedIn-Zhu_Zhi-333333?style=flat-square&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2I0YjRiNCIgZD0iTTIwIDNINGEyIDIgMCAwIDAtMiAydjE0YTIgMiAwIDAgMCAyIDJoMTZhMiAyIDAgMCAwIDItMlY1YTIgMiAwIDAgMC0yLTJ6bS04IDRhMi41IDIuNSAwIDEgMSAwIDUgMi41IDIuNSAwIDAgMSAwLTV6bTUgMTFIN3YtMWMwLTEuNjYgMy4zMy0yLjUgNS0yLjVzNSAuODQgNSAyLjV2MXoiLz48L3N2Zz4%3D&labelColor=121212" alt="LinkedIn profile, Zhu Zhi"></a>
 
 </div>
 

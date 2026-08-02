@@ -26,9 +26,9 @@ import sys
 import urllib.error
 import urllib.request
 
-from generate_profile_cards import (T, W, card_title, dither, dither_ramp,
-                                    panel, rect, stripe, tiles, tw, txt,
-                                    write_card)
+from generate_profile_cards import (T, W, backdrop, card_title, dither,
+                                    dither_ramp, panel, rect, stripe, tiles,
+                                    tw, txt, write_card)
 
 USER = "leo-Zhizhu"
 
@@ -129,7 +129,8 @@ def human(n: int) -> str:
 
 def card(data):
     h = 238
-    s = panel(h, "GitHub at a glance")
+    s = panel(h, "GitHub at a glance",
+              under=backdrop(h, 9925, grid=26, dots=220))
     s.append(stripe(h))
 
     s.append(card_title("GitHub at a glance"))
@@ -144,7 +145,7 @@ def card(data):
     ]))
 
     s.append(dither_ramp(28, 146, W - 56, steps=4, step_h=2, top=8))
-    s.append(txt(32, 178, "language mix, by bytes of code", 10, T["faint"],
+    s.append(txt(32, 178, "language mix, by bytes of code", 10, T["dim"],
                  mono=True))
 
     # Stacked bar. A 2px surface gap between segments keeps them separable
