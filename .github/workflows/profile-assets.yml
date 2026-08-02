@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
       TZ: America/New_York
 
@@ -34,33 +34,51 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Rebuild the static cards
+      - name: Install rendering dependencies
+        run: pip install --quiet pillow numpy
+
+      - name: Check for a browser to rasterise with
+        run: |
+          for bin in google-chrome chromium chromium-browser; do
+            if command -v "$bin" >/dev/null; then
+              echo "found $bin"; exit 0
+            fi
+          done
+          echo "::error::no chrome/chromium on the runner"; exit 1
+
+      - name: Rebuild the card SVGs
         run: python3 tools/generate_profile_cards.py
 
       - name: Refresh the GitHub stats card
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # The script exits non-zero without writing if the API is unreachable;
-        # restore the committed cards so a failed refresh never lands a broken
-        # card the way the old third-party action did.
-        run: |
-          python3 tools/generate_github_stats.py \
-            || git checkout -- profile/github-light.svg profile/github-dark.svg
+        # The script falls back to profile/github-stats.json when the API
+        # refuses a request, so a rate-limited run re-renders the last good
+        # numbers instead of a card built from a half-finished fetch.
+        run: python3 tools/generate_github_stats.py
+
+      - name: Render the cards through the CRT pipeline
+        run: python3 tools/render_cards.py
 
       - name: Generate the contribution snake
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            assets/github-contribution-grid-snake.svg
-            assets/github-contribution-grid-snake-dark.svg?palette=github-dark
+            assets/snake.svg?color_snake=%232563eb&color_dots=%23121212,%23333333,%23585858,%238b8b8b,%233b82f6
 
-      - name: Reject any card that rendered an error
+      - name: Verify every card rendered
         run: |
-          if grep -rl "Something went wrong" profile/ 2>/dev/null | grep .; then
-            echo "::error::a generated card contains an error message"
-            exit 1
-          fi
+          missing=0
+          for card in hero impact card-bonsai card-langalpha \
+                      card-sunlightcity stack github; do
+            png="profile/$card.png"
+            if [ ! -s "$png" ] || [ "$(stat -c%s "$png")" -lt 10000 ]; then
+              echo "::error::$png missing or suspiciously small"
+              missing=1
+            fi
+          done
+          exit $missing
 
       - name: Bump the README timestamp so GitHub re-fetches the cards
         run: |

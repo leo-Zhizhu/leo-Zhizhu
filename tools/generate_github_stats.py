@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render profile/github-{light,dark}.svg from the GitHub REST API.
+"""Render profile/github.svg from the GitHub REST API.
 
 Replaces the third-party stats/top-language cards, which depend on a shared
 hosted instance that rate-limits (503) and on a token scope GITHUB_TOKEN does
@@ -26,8 +26,9 @@ import sys
 import urllib.error
 import urllib.request
 
-from generate_profile_cards import (THEMES, W, panel, rect, stripe, tiles,
-                                    tw, txt)
+from generate_profile_cards import (T, W, dither, dither_ramp, eyebrow,
+                                    panel, rect, stripe, tiles, tw, txt,
+                                    write_card)
 
 USER = "leo-Zhizhu"
 
@@ -39,14 +40,16 @@ EXTRA_REPOS = ["ginlix-ai/LangAlpha"]
 SKIP_LANGS = {"HTML", "CSS", "Shell", "Dockerfile", "Makefile", "CMake",
               "Jupyter Notebook", "Batchfile", "Roff", "SCSS"}
 
-# Reference categorical order -- validated for adjacent pairs in both modes,
-# which is the pairlist a stacked bar uses.
-SERIES = {
-    "light": ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4",
-              "#4a3aa7", "#8c959f"],
-    "dark": ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181",
-             "#9085e9", "#6e7681"],
-}
+# With one accent colour there is no categorical palette to reach for, so the
+# segments are separated by dither density instead -- ordered, which suits a
+# bar sorted by share, and the encoding this whole style is built on. Every
+# segment is named in the legend, so density never has to carry it alone.
+def series_fill(i: int) -> str:
+    ramp = [T["accent"], dither(12, "a"), dither(8, "a"),
+            dither(12, "m"), dither(8, "m"), dither(5, "m"), dither(3, "m")]
+    return ramp[min(i, len(ramp) - 1)]
+
+
 TOP_N = 5
 
 
@@ -124,42 +127,45 @@ def human(n: int) -> str:
     return f"{n / 1000:.1f}k".replace(".0k", "k") if n >= 1000 else str(n)
 
 
-def card(t, mode, data):
-    h = 220
-    s = panel(t, h, "GitHub at a glance")
-    s.append(stripe(t, h, t["cyan"]))
+def card(data):
+    h = 232
+    s = panel(h, "GitHub at a glance")
+    s.append(stripe(h))
 
-    s.append(txt(32, 42, "Public repositories I own, plus the org repo I ship "
-                "day to day.", 12.5, t["muted"]))
+    s.append(eyebrow(32, 40, "github"))
+    s.append(txt(32, 62, "Public repositories I own, plus the org repo I ship "
+                "day to day.", 12.5, T["muted"]))
 
-    s.extend(tiles(t, 88, [
+    s.extend(tiles(102, [
         (human(data["stars"]), "stars earned"),
         (str(data["repos"]), "public repos"),
         (str(data["followers"]), "followers"),
         (str(data["distinct_languages"]), "languages in use"),
-    ], t["cyan"]))
+    ]))
 
-    s.append(f'<path d="M28 128 H{W - 28}" stroke="{t["rule"]}" '
-             f'stroke-width="1"/>')
-    s.append(txt(32, 156, "Language mix, by bytes of code", 11.5, t["faint"]))
+    s.append(dither_ramp(28, 140, W - 56, steps=4, step_h=2, top=8))
+    s.append(txt(32, 172, "language mix, by bytes of code", 10, T["faint"],
+                 mono=True))
 
-    # Stacked bar: 2px surface gap between segments keeps them separable
-    # without a stroke, and every segment is also named in the legend.
-    bar_y, bar_h, x0, span = 166, 12, 32, W - 64
-    palette = SERIES[mode]
+    # Stacked bar. A 2px surface gap between segments keeps them separable
+    # without a stroke, on top of the density difference.
+    bar_y, bar_h, x0, span = 182, 14, 32, W - 64
     x = x0
     for i, (_, share) in enumerate(data["languages"]):
         seg = max(span * share - 2, 3)
-        s.append(rect(x, bar_y, seg, bar_h, palette[i % len(palette)], rx=3))
+        s.append(rect(x, bar_y, seg, bar_h, T["bg"]))
+        s.append(rect(x, bar_y, seg, bar_h, series_fill(i)))
         x += seg + 2
+    s.append(rect(x0, bar_y, span, bar_h, "none", stroke=T["border"]))
 
     lx = 32
     for i, (name, share) in enumerate(data["languages"]):
         label = f"{name} {share * 100:.0f}%"
-        s.append(f'<circle cx="{lx + 4:.1f}" cy="202" r="4.5" '
-                 f'fill="{palette[i % len(palette)]}"/>')
-        s.append(txt(lx + 14, 206, label, 11, t["muted"]))
-        lx += 14 + tw(label, 11) + 20
+        s.append(rect(lx, 208, 9, 9, T["bg"]))
+        s.append(rect(lx, 208, 9, 9, series_fill(i)))
+        s.append(rect(lx, 208, 9, 9, "none", stroke=T["border"]))
+        s.append(txt(lx + 15, 216, label, 10, T["muted"], mono=True))
+        lx += 15 + tw(label, 10) + 18
     return h, s
 
 
@@ -186,12 +192,8 @@ def main() -> None:
         with open(cache, encoding="utf-8") as fh:
             data = json.load(fh)
 
-    for mode, theme in THEMES.items():
-        h, parts = card(theme, mode, data)
-        path = os.path.join(out, f"github-{mode}.svg")
-        with open(path, "w", encoding="utf-8") as fh:
-            fh.write("\n".join(parts) + "\n</svg>\n")
-        print(f"wrote {path} ({W}x{h})")
+    h, parts = card(data)
+    write_card(out, "github", h, parts)
     print(json.dumps(data, indent=2))
 
 

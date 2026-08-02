@@ -1,16 +1,13 @@
 <!-- profile cards updated: 2026-08-01 -->
-<!-- Cards in ./profile are generated: python3 tools/generate_profile_cards.py -->
+<!-- Cards: python3 tools/generate_profile_cards.py && python3 tools/render_cards.py -->
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/hero-dark.svg">
-  <img src="./profile/hero-light.svg" width="880" alt="Zhu (Leo) Zhi — Cornell CS '28, GPA 4.0 / 4.0. Software Engineer, Machine Learning Engineer, Robotics Engineer. However the technical landscape shifts, engineering keeps returning to one origin: making things that solve real problems — with a coherent mind and a practice that never stops improving.">
-</picture>
+<img src="./profile/hero.png" width="880" alt="Zhu (Leo) Zhi — Cornell CS '28, GPA 4.0 / 4.0. Software Engineer, Machine Learning Engineer, Robotics Engineer. However the technical landscape shifts, engineering keeps returning to one origin: making things that solve real problems — with a coherent mind and a practice that never stops improving.">
 
-<a href="mailto:zhizhu0730@gmail.com"><img src="https://img.shields.io/badge/zhizhu0730@gmail.com-0782a2?style=for-the-badge&logo=gmail&logoColor=white" alt="Email zhizhu0730 at gmail dot com"></a>
-<a href="mailto:zz766@cornell.edu"><img src="https://img.shields.io/badge/zz766@cornell.edu-b45309?style=for-the-badge&logo=maildotru&logoColor=white" alt="Email zz766 at cornell dot edu"></a>
-<a href="https://linkedin.com/in/zhu-zhi-506499376"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+<a href="mailto:zhizhu0730@gmail.com"><img src="https://img.shields.io/badge/zhizhu0730@gmail.com-2563eb?style=flat-square&logo=gmail&logoColor=white&labelColor=121212" alt="Email zhizhu0730 at gmail dot com"></a>
+<a href="mailto:zz766@cornell.edu"><img src="https://img.shields.io/badge/zz766@cornell.edu-333333?style=flat-square&logo=maildotru&logoColor=8b8b8b&labelColor=121212" alt="Email zz766 at cornell dot edu"></a>
+<a href="https://linkedin.com/in/zhu-zhi-506499376"><img src="https://img.shields.io/badge/LinkedIn-333333?style=flat-square&logo=linkedin&logoColor=8b8b8b&labelColor=121212" alt="LinkedIn"></a>
 
 </div>
 
@@ -19,10 +16,7 @@
 ## Numbers I moved
 
 <div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/impact-dark.svg">
-  <img src="./profile/impact-light.svg" width="880" alt="Improvement factor per workload on a log scale, largest first. City-scale simulation run, Unity raycasting over Manhattan: 30 hours to 11 minutes, 161x faster. PostGIS spatial query after index and memory retune: 2,000 ms to 25 ms, 80x faster. Agent context overhead per LLM call: 10k tokens to about 300, 33x less. AUV steady-state error, 6-DoF controller: baseline to 20%, 5x less. Web interaction latency, INP in the chat workspace: 140 ms to 40 ms, 3.5x faster. Fleet data uploaded per vehicle per day: 100% to 30%, 3.3x less.">
-</picture>
+<img src="./profile/impact.png" width="880" alt="Improvement factor per workload on a log scale, largest first. City-scale simulation run, Unity raycasting over Manhattan: 30 hours to 11 minutes, 161x faster. PostGIS spatial query after index and memory retune: 2,000 ms to 25 ms, 80x faster. Agent context overhead per LLM call: 10k tokens to about 300, 33x less. AUV steady-state error, 6-DoF controller: baseline to 20%, 5x less. Web interaction latency, INP in the chat workspace: 140 ms to 40 ms, 3.5x faster. Fleet data uploaded per vehicle per day: 100% to 30%, 3.3x less.">
 </div>
 
 ---
@@ -31,10 +25,7 @@
 
 ### Bonsai Robotics · Machine Learning Engineering Intern
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/card-bonsai-dark.svg">
-  <img src="./profile/card-bonsai-light.svg" width="880" alt="On-vehicle data curation pipeline, v2. On the vehicle: sensor stream of MCAP recordings, to frame embeddings from an on-vehicle encoder, to a window score measured as distance to characteristic vectors, to a race-free upload gate, to the cloud. Off the vehicle, a remote fleet server makes a periodic pass over the full uploaded dataset and sends refreshed characteristic vectors back down to the scoring stage, closing the loop. 70% less upload volume, 8x usable score spread, under 3% latency cost for a distilled vision-language model, 287k frames embedded on Ray.">
-</picture>
+<img src="./profile/card-bonsai.png" width="880" alt="On-vehicle data curation pipeline, v2. On the vehicle: sensor stream of MCAP recordings, to frame embeddings from an on-vehicle encoder, to a window score measured as distance to characteristic vectors, to a race-free upload gate, to the cloud. Off the vehicle, a remote fleet server makes a periodic pass over the full uploaded dataset and sends refreshed characteristic vectors back down to the scoring stage, closing the loop. 70% less upload volume, 8x usable score spread, under 3% latency cost for a distilled vision-language model, 287k frames embedded on Ray.">
 
 <sub>Private company repo, so there is no link — this is the part I can describe.</sub>
 
@@ -47,10 +38,7 @@
 
 ### Ginlix AI · Full-Stack Software Engineer
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/card-langalpha-dark.svg">
-  <img src="./profile/card-langalpha-light.svg" width="880" alt="LangAlpha architecture: web, Slack and CLI into an agent core with programmatic tool calling and a subagent swarm, into a Daytona sandbox, durable Postgres and Redis state, and 30+ native and MCP tools. 10k fewer tokens per agent call, interaction latency 140 to 40 ms, 1.6k GitHub stars.">
-</picture>
+<img src="./profile/card-langalpha.png" width="880" alt="LangAlpha architecture: web, Slack and CLI into an agent core with programmatic tool calling and a subagent swarm, into a Daytona sandbox, durable Postgres and Redis state, and 30+ native and MCP tools. 10k fewer tokens per agent call, interaction latency 140 to 40 ms, 1.6k GitHub stars.">
 
 <sub>
 
@@ -66,10 +54,7 @@
 
 ### Cornell Ezra Systems · Simulation Infrastructure Lead
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/card-sunlightcity-dark.svg">
-  <img src="./profile/card-sunlightcity-light.svg" width="880" alt="SunlightCity pipeline: Unity Manhattan mesh to a headless IL2CPP raycaster to 54 Kubernetes workers to a 9-shard PostGIS cluster, finishing in 11 minutes 9 seconds. 161x faster than one machine, 16M rows per second into Postgres, spatial queries from 2000 ms to 25 ms.">
-</picture>
+<img src="./profile/card-sunlightcity.png" width="880" alt="SunlightCity pipeline: Unity Manhattan mesh to a headless IL2CPP raycaster to 54 Kubernetes workers to a 9-shard PostGIS cluster, finishing in 11 minutes 9 seconds. 161x faster than one machine, 16M rows per second into Postgres, spatial queries from 2000 ms to 25 ms.">
 
 <sub>
 
@@ -87,10 +72,7 @@
 ## Stack
 
 <div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/stack-dark.svg">
-  <img src="./profile/stack-light.svg" width="880" alt="Stack grouped by area. Languages: Python, C++, Java, Go, Kotlin, C#, TypeScript, JavaScript, SQL, Bash. ML and perception: PyTorch, NumPy, Pandas, OpenCV, YOLOv7, CLIP, SigLIP2, TIPSv2, BEV perception, knowledge distillation, vision-language models, embedding pipelines, benchmark design, adaptive thresholding. Agents and LLM systems: LangGraph, LangChain, MCP, FastMCP, RAG, programmatic tool calling, subagent orchestration, context engineering, memory compaction, sandboxed execution, SSE streaming, tool routing. Robotics and control: ROS 2, MCAP, 6-DoF control, system identification, controller tuning, state machines, sensor fusion, LiDAR and camera, real-time on-vehicle, field-data iteration. Backend and web: Spring Boot, FastAPI, Node.js, React, TanStack Query, Jetpack Compose, Room, Retrofit and OkHttp, REST APIs, WebSocket, session auth, stale-while-revalidate. Data and storage: PostgreSQL, PostGIS, Redis, Elasticsearch, SQLite, sharding, spatial indexing, query tuning, bulk ingest, schema migration, caching strategy. Infrastructure and scale: Docker, Kubernetes, AWS with RDS, ECR and App Runner, Ray and Anyscale, Unity headless, IL2CPP, MapReduce, autoscaling, capacity planning, CI/CD, GitHub Actions, Linux. Foundations: machine learning, algorithms and data structures, databases, computer organization, cryptography, probability, linear algebra, distributed systems.">
-</picture>
+<img src="./profile/stack.png" width="880" alt="Stack grouped by area. Languages: Python, C++, Java, Go, Kotlin, C#, TypeScript, JavaScript, SQL, Bash. ML and perception: PyTorch, NumPy, Pandas, OpenCV, YOLOv7, CLIP, SigLIP2, TIPSv2, BEV perception, knowledge distillation, vision-language models, embedding pipelines, benchmark design, adaptive thresholding. Agents and LLM systems: LangGraph, LangChain, MCP, FastMCP, RAG, programmatic tool calling, subagent orchestration, context engineering, memory compaction, sandboxed execution, SSE streaming, tool routing. Robotics and control: ROS 2, MCAP, 6-DoF control, system identification, controller tuning, state machines, sensor fusion, LiDAR and camera, real-time on-vehicle, field-data iteration. Backend and web: Spring Boot, FastAPI, Node.js, React, TanStack Query, Jetpack Compose, Room, Retrofit and OkHttp, REST APIs, WebSocket, session auth, stale-while-revalidate. Data and storage: PostgreSQL, PostGIS, Redis, Elasticsearch, SQLite, sharding, spatial indexing, query tuning, bulk ingest, schema migration, caching strategy. Infrastructure and scale: Docker, Kubernetes, AWS with RDS, ECR and App Runner, Ray and Anyscale, Unity headless, IL2CPP, MapReduce, autoscaling, capacity planning, CI/CD, GitHub Actions, Linux. Foundations: machine learning, algorithms and data structures, databases, computer organization, cryptography, probability, linear algebra, distributed systems.">
 </div>
 
 ---
@@ -111,15 +93,9 @@
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./profile/github-dark.svg">
-  <img src="./profile/github-light.svg" width="880" alt="GitHub at a glance: 1.6k stars earned, 12 public repos, 13 followers, 11 languages in use, with a language mix bar led by Python and TypeScript.">
-</picture>
+<img src="./profile/github.png" width="880" alt="GitHub at a glance: 1.6k stars earned, 12 public repos, 13 followers, 11 languages in use, with a language mix bar led by Python and TypeScript.">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/github-contribution-grid-snake-dark.svg">
-  <img src="./assets/github-contribution-grid-snake.svg" width="880" alt="Contribution graph rendered as a snake eating the commit squares">
-</picture>
+<img src="./assets/snake.svg" width="880" alt="Contribution graph rendered as a snake eating the commit squares">
 
 </div>
 
