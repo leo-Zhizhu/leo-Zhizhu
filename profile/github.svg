@@ -20,18 +20,18 @@
 <rect x="646.0" y="86.0" width="1.0" height="40.0" rx="0" fill="url(#dt8d)"/>
 <rect x="28.0" y="140.0" width="824.0" height="2.0" rx="0" fill="url(#dt8d)"/><rect x="28.0" y="142.0" width="824.0" height="2.0" rx="0" fill="url(#dt6d)"/><rect x="28.0" y="144.0" width="824.0" height="2.0" rx="0" fill="url(#dt4d)"/><rect x="28.0" y="146.0" width="824.0" height="2.0" rx="0" fill="url(#dt2d)"/>
 <text x="32.0" y="172.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#585858" text-anchor="start">language mix, by bytes of code</text>
-<rect x="32.0" y="182.0" width="510.0" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="32.0" y="182.0" width="510.0" height="14.0" rx="0" fill="#2563eb"/>
-<rect x="544.0" y="182.0" width="253.1" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="544.0" y="182.0" width="253.1" height="14.0" rx="0" fill="url(#dt12a)"/>
-<rect x="799.0" y="182.0" width="14.0" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="799.0" y="182.0" width="14.0" height="14.0" rx="0" fill="url(#dt8a)"/>
+<rect x="32.0" y="182.0" width="510.1" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="32.0" y="182.0" width="510.1" height="14.0" rx="0" fill="#2563eb"/>
+<rect x="544.1" y="182.0" width="252.9" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="544.1" y="182.0" width="252.9" height="14.0" rx="0" fill="url(#dt12a)"/>
+<rect x="799.1" y="182.0" width="14.0" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="799.1" y="182.0" width="14.0" height="14.0" rx="0" fill="url(#dt8a)"/>
 <rect x="815.0" y="182.0" width="12.7" height="14.0" rx="0" fill="#0f0f0f"/>
 <rect x="815.0" y="182.0" width="12.7" height="14.0" rx="0" fill="url(#dt12m)"/>
 <rect x="829.7" y="182.0" width="5.4" height="14.0" rx="0" fill="#0f0f0f"/>
 <rect x="829.7" y="182.0" width="5.4" height="14.0" rx="0" fill="url(#dt8m)"/>
-<rect x="837.0" y="182.0" width="9.0" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="837.0" y="182.0" width="9.0" height="14.0" rx="0" fill="url(#dt5m)"/>
+<rect x="837.1" y="182.0" width="8.9" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="837.1" y="182.0" width="8.9" height="14.0" rx="0" fill="url(#dt5m)"/>
 <rect x="32.0" y="182.0" width="816.0" height="14.0" rx="0" fill="none" stroke="#333333" stroke-width="1"/>
 <rect x="32.0" y="208.0" width="9.0" height="9.0" rx="0" fill="#0f0f0f"/>
 <rect x="32.0" y="208.0" width="9.0" height="9.0" rx="0" fill="#2563eb"/>
