@@ -21,27 +21,27 @@
 <rect x="646.0" y="92.0" width="1.0" height="40.0" rx="0" fill="url(#dt8d)"/>
 <rect x="28.0" y="146.0" width="824.0" height="2.0" rx="0" fill="url(#dt8d)"/><rect x="28.0" y="148.0" width="824.0" height="2.0" rx="0" fill="url(#dt6d)"/><rect x="28.0" y="150.0" width="824.0" height="2.0" rx="0" fill="url(#dt4d)"/><rect x="28.0" y="152.0" width="824.0" height="2.0" rx="0" fill="url(#dt2d)"/>
 <text x="32.0" y="178.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#8b8b8b" text-anchor="start">language mix, by bytes of code</text>
-<rect x="32.0" y="188.0" width="510.3" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="32.0" y="188.0" width="510.3" height="14.0" rx="0" fill="#2563eb"/>
-<rect x="544.3" y="188.0" width="252.8" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="544.3" y="188.0" width="252.8" height="14.0" rx="0" fill="url(#dt12a)"/>
-<rect x="799.1" y="188.0" width="14.0" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="799.1" y="188.0" width="14.0" height="14.0" rx="0" fill="url(#dt8a)"/>
-<rect x="815.0" y="188.0" width="12.7" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="815.0" y="188.0" width="12.7" height="14.0" rx="0" fill="url(#dt12m)"/>
-<rect x="829.7" y="188.0" width="5.4" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="829.7" y="188.0" width="5.4" height="14.0" rx="0" fill="url(#dt8m)"/>
-<rect x="837.1" y="188.0" width="8.9" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="837.1" y="188.0" width="8.9" height="14.0" rx="0" fill="url(#dt5m)"/>
+<rect x="32.0" y="188.0" width="504.1" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="32.0" y="188.0" width="504.1" height="14.0" rx="0" fill="#2563eb"/>
+<rect x="538.1" y="188.0" width="260.0" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="538.1" y="188.0" width="260.0" height="14.0" rx="0" fill="url(#dt12a)"/>
+<rect x="800.1" y="188.0" width="13.7" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="800.1" y="188.0" width="13.7" height="14.0" rx="0" fill="url(#dt8a)"/>
+<rect x="815.7" y="188.0" width="12.3" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="815.7" y="188.0" width="12.3" height="14.0" rx="0" fill="url(#dt12m)"/>
+<rect x="830.1" y="188.0" width="5.2" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="830.1" y="188.0" width="5.2" height="14.0" rx="0" fill="url(#dt8m)"/>
+<rect x="837.3" y="188.0" width="8.7" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="837.3" y="188.0" width="8.7" height="14.0" rx="0" fill="url(#dt5m)"/>
 <rect x="32.0" y="188.0" width="816.0" height="14.0" rx="0" fill="none" stroke="#333333" stroke-width="1"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#0f0f0f"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#2563eb"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="none" stroke="#333333" stroke-width="1"/>
-<text x="47.0" y="222.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#b4b4b4" text-anchor="start">Python 63%</text>
+<text x="47.0" y="222.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#b4b4b4" text-anchor="start">Python 62%</text>
 <rect x="125.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#0f0f0f"/>
 <rect x="125.0" y="214.0" width="9.0" height="9.0" rx="0" fill="url(#dt12a)"/>
 <rect x="125.0" y="214.0" width="9.0" height="9.0" rx="0" fill="none" stroke="#333333" stroke-width="1"/>
-<text x="140.0" y="222.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#b4b4b4" text-anchor="start">TypeScript 31%</text>
+<text x="140.0" y="222.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#b4b4b4" text-anchor="start">TypeScript 32%</text>
 <rect x="242.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#0f0f0f"/>
 <rect x="242.0" y="214.0" width="9.0" height="9.0" rx="0" fill="url(#dt8a)"/>
 <rect x="242.0" y="214.0" width="9.0" height="9.0" rx="0" fill="none" stroke="#333333" stroke-width="1"/>
