@@ -237,12 +237,27 @@
       }
     }
 
+    // ?theme=dark|light lets the README's two buttons each open the site in a
+    // fixed theme. Public-facing names map to the internal crt/paper ids, which
+    // also key the CSS and the card filenames; both spellings are accepted.
+    var ALIAS = { dark: "crt", light: "paper", crt: "crt", paper: "paper" };
+    var query = "";
+    try {
+      query = (new URLSearchParams(window.location.search).get("theme") || "");
+    } catch (e) {}
+    var requested = ALIAS[query.toLowerCase()];
+
     var saved = null;
     try { saved = localStorage.getItem("portfolio-theme"); } catch (e) {}
-    // No stored choice: follow the same signal the README does, so the page
-    // and the profile agree on first visit.
-    apply(saved || (window.matchMedia("(prefers-color-scheme: light)").matches
-                    ? "paper" : "crt"), false);
+
+    // Precedence: an explicit ?theme= link, then a stored choice, then the
+    // system signal the README follows so page and profile agree on first
+    // visit. A ?theme= arrival persists, which also stops the system-change
+    // listener below from overriding what the visitor was linked to.
+    apply(requested || saved
+            || (window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "paper" : "crt"),
+          Boolean(requested));
 
     buttons.forEach(function (b) {
       b.addEventListener("click", function () { apply(b.dataset.set, true); });
