@@ -35,19 +35,46 @@ SANS = ("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,"
 MONO = ("ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,"
         "'Liberation Mono',monospace")
 
-T = {
-    "bg": "#0f0f0f",        # recessed wells: node boxes, chips
-    "panel": "#121212",     # card surface
-    "border": "#333333",
-    "rule": "#333333",
-    "track": "#333333",
-    "faint": "#585858",     # hairlines and decoration ONLY, never type
-    "dim": "#8b8b8b",       # small secondary type -- 5.5:1
-    "muted": "#b4b4b4",     # body type -- 8.9:1
-    "text": "#e8e8e8",      # headings -- 15.3:1
-    "accent": "#2563eb",    # fills, bars, large numerals
-    "accent_text": "#3b82f6",  # the same blue, lifted for small type
+# Two skins, same structure and near-identical contrast ratios, so the
+# hierarchy reads the same either way. Ratios are quoted against each skin's
+# own card surface.
+THEMES = {
+    "crt": {                    # phosphor on a dark tube
+        "bg": "#0f0f0f",        # recessed wells: node boxes, chips
+        "panel": "#121212",     # card surface
+        "border": "#333333",    # 1.5:1  structure
+        "rule": "#333333",
+        "track": "#333333",
+        "faint": "#585858",     # 2.6:1  hairlines ONLY, never type
+        "dim": "#8b8b8b",       # 5.5:1  small secondary type
+        "muted": "#b4b4b4",     # 8.9:1  body type
+        "text": "#e8e8e8",      # 15.3:1 headings
+        "accent": "#2563eb",    # 3.6:1  fills, bars, large numerals
+        "accent_text": "#3b82f6",  # 5.1:1 the blue, lifted for small type
+    },
+    "paper": {                  # ink on warm graph paper
+        "bg": "#f4f2ec",
+        "panel": "#e9e7df",
+        "border": "#c2bfb4",    # 1.5:1
+        "rule": "#c2bfb4",
+        "track": "#c2bfb4",
+        "faint": "#9c9a92",     # 2.3:1
+        "dim": "#5f5d55",       # 5.3:1
+        "muted": "#3d3b35",     # 9.0:1
+        "text": "#14130e",      # 15.0:1
+        "accent": "#2563eb",    # 4.2:1
+        "accent_text": "#1d4ed8",  # 5.4:1
+    },
 }
+
+T = THEMES["crt"]
+
+
+def use_theme(name: str) -> None:
+    """Rebind the module-level palette. Every draw helper reads T as a global,
+    so swapping the binding re-skins all 86 colour references at once."""
+    global T
+    T = THEMES[name]
 
 # ---------------------------------------------------------------- primitives
 
@@ -105,8 +132,7 @@ def rect(x, y, w, h, fill, rx=0, stroke=None, sw=1, opacity=None):
 # k/16 coverage -- the classic way to fake a tone on a display that has none.
 BAYER = ((0, 8, 2, 10), (12, 4, 14, 6), (3, 11, 1, 9), (15, 7, 13, 5))
 DITHER_LEVELS = (1, 2, 3, 4, 6, 8, 10, 12, 14)
-DITHER_INKS = {"a": T["accent"], "g": T["faint"], "d": T["border"],
-               "m": T["muted"]}
+DITHER_INK_ROLES = {"a": "accent", "g": "faint", "d": "border", "m": "muted"}
 
 
 def dither(level: int, ink: str = "a") -> str:
@@ -116,7 +142,8 @@ def dither(level: int, ink: str = "a") -> str:
 
 def _dither_defs() -> str:
     out = []
-    for ink, colour in DITHER_INKS.items():
+    for ink, role in DITHER_INK_ROLES.items():
+        colour = T[role]
         for level in DITHER_LEVELS:
             cells = "".join(
                 f'<rect x="{c}" y="{r}" width="1" height="1" fill="{colour}"/>'
@@ -866,9 +893,10 @@ CARDS = {
 }
 
 
-def write_card(out_dir, name, h, parts):
+def write_card(out_dir, name, h, parts, theme=None):
     parts.append(overlay(h))
-    path = os.path.join(out_dir, f"{name}.svg")
+    suffix = f"-{theme}" if theme else ""
+    path = os.path.join(out_dir, f"{name}{suffix}.svg")
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(parts) + "\n</svg>\n")
     print(f"wrote {path} ({W}x{h})")
@@ -878,9 +906,11 @@ def main() -> None:
     out = os.path.join(os.path.dirname(os.path.dirname(
         os.path.abspath(__file__))), "profile")
     os.makedirs(out, exist_ok=True)
-    for name, build in CARDS.items():
-        h, parts = build()
-        write_card(out, name, h, parts)
+    for theme in THEMES:
+        use_theme(theme)
+        for name, build in CARDS.items():
+            h, parts = build()
+            write_card(out, name, h, parts, theme)
 
 
 if __name__ == "__main__":

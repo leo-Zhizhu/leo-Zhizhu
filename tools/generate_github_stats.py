@@ -26,7 +26,8 @@ import sys
 import urllib.error
 import urllib.request
 
-from generate_profile_cards import (T, W, backdrop, card_title, dither,
+import generate_profile_cards as gp
+from generate_profile_cards import (W, backdrop, card_title, dither,
                                     dither_ramp, panel, rect, stripe, tiles,
                                     tw, txt, write_card)
 
@@ -45,7 +46,7 @@ SKIP_LANGS = {"HTML", "CSS", "Shell", "Dockerfile", "Makefile", "CMake",
 # bar sorted by share, and the encoding this whole style is built on. Every
 # segment is named in the legend, so density never has to carry it alone.
 def series_fill(i: int) -> str:
-    ramp = [T["accent"], dither(12, "a"), dither(8, "a"),
+    ramp = [gp.T["accent"], dither(12, "a"), dither(8, "a"),
             dither(12, "m"), dither(8, "m"), dither(5, "m"), dither(3, "m")]
     return ramp[min(i, len(ramp) - 1)]
 
@@ -135,7 +136,7 @@ def card(data):
 
     s.append(card_title("GitHub at a glance"))
     s.append(txt(32, 66, "Public repositories I own, plus the org repo I ship "
-                "day to day.", 12.5, T["muted"]))
+                "day to day.", 12.5, gp.T["muted"]))
 
     s.extend(tiles(108, [
         (human(data["stars"]), "stars earned"),
@@ -145,7 +146,7 @@ def card(data):
     ]))
 
     s.append(dither_ramp(28, 146, W - 56, steps=4, step_h=2, top=8))
-    s.append(txt(32, 178, "language mix, by bytes of code", 10, T["dim"],
+    s.append(txt(32, 178, "language mix, by bytes of code", 10, gp.T["dim"],
                  mono=True))
 
     # Stacked bar. A 2px surface gap between segments keeps them separable
@@ -154,18 +155,18 @@ def card(data):
     x = x0
     for i, (_, share) in enumerate(data["languages"]):
         seg = max(span * share - 2, 3)
-        s.append(rect(x, bar_y, seg, bar_h, T["bg"]))
+        s.append(rect(x, bar_y, seg, bar_h, gp.T["bg"]))
         s.append(rect(x, bar_y, seg, bar_h, series_fill(i)))
         x += seg + 2
-    s.append(rect(x0, bar_y, span, bar_h, "none", stroke=T["border"]))
+    s.append(rect(x0, bar_y, span, bar_h, "none", stroke=gp.T["border"]))
 
     lx = 32
     for i, (name, share) in enumerate(data["languages"]):
         label = f"{name} {share * 100:.0f}%"
-        s.append(rect(lx, 214, 9, 9, T["bg"]))
+        s.append(rect(lx, 214, 9, 9, gp.T["bg"]))
         s.append(rect(lx, 214, 9, 9, series_fill(i)))
-        s.append(rect(lx, 214, 9, 9, "none", stroke=T["border"]))
-        s.append(txt(lx + 15, 222, label, 10, T["muted"], mono=True))
+        s.append(rect(lx, 214, 9, 9, "none", stroke=gp.T["border"]))
+        s.append(txt(lx + 15, 222, label, 10, gp.T["muted"], mono=True))
         lx += 15 + tw(label, 10) + 18
     return h, s
 
@@ -193,8 +194,10 @@ def main() -> None:
         with open(cache, encoding="utf-8") as fh:
             data = json.load(fh)
 
-    h, parts = card(data)
-    write_card(out, "github", h, parts)
+    for theme in gp.THEMES:
+        gp.use_theme(theme)
+        h, parts = card(data)
+        write_card(out, "github", h, parts, theme)
     print(json.dumps(data, indent=2))
 
 

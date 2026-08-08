@@ -12,6 +12,7 @@ on:
     branches: [main]
     paths:
       - "tools/**"
+      - "docs/**"
       - ".github/workflows/profile-assets.yml"
 
 concurrency:
@@ -65,18 +66,21 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            assets/snake.svg?color_snake=%23e8e8e8&color_dots=%231e1e1e,%231b3f8f,%232563eb,%233b82f6,%238ab4fa
+            assets/snake-crt.svg?color_snake=%23e8e8e8&color_dots=%231e1e1e,%231b3f8f,%232563eb,%233b82f6,%238ab4fa
+            assets/snake-paper.svg?color_snake=%2314130e&color_dots=%23dad7cc,%238ab4fa,%233b82f6,%232563eb,%231d4ed8
 
       - name: Verify every card rendered
         run: |
           missing=0
           for card in hero impact card-bonsai card-langalpha \
-                      card-sunlightcity stack github; do
-            png="profile/$card.png"
+                      card-sunlightcity stack shelf principles github; do
+           for theme in crt paper; do
+            png="profile/$card-$theme.png"
             if [ ! -s "$png" ] || [ "$(stat -c%s "$png")" -lt 10000 ]; then
               echo "::error::$png missing or suspiciously small"
               missing=1
             fi
+           done
           done
           exit $missing
 
@@ -88,7 +92,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile assets README.md
+          git add profile assets docs README.md
           if git diff --staged --quiet; then
             echo "nothing to commit"
             exit 0

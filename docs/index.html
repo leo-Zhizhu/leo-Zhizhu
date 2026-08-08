@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" data-theme="crt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zhu (Leo) Zhi — software, machine learning and robotics</title>
+<meta name="description" content="CS @ Cornell '28. ML Engineering at Bonsai Robotics, shipping to a real vehicle fleet. Building LangAlpha, an open-source agent harness with 1.6k stars.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%23121212'/><rect x='3' y='3' width='10' height='10' fill='%232563eb'/></svg>">
+<style>
+  /* Two skins, same structure. The README picks between the same two image
+     sets automatically via prefers-color-scheme; here it is a button, and the
+     choice persists. Nothing but colour changes -- the cards are pre-rendered
+     per theme, so switching swaps <img> sources rather than restyling. */
+  :root {
+    --page:   #0d0d0d;
+    --panel:  #121212;
+    --border: #333333;
+    --faint:  #585858;
+    --dim:    #8b8b8b;
+    --muted:  #b4b4b4;
+    --text:   #e8e8e8;
+    --accent: #2563eb;
+    --accent-text: #3b82f6;
+    --grid:   rgba(255, 255, 255, 0.028);
+    color-scheme: dark;
+  }
+  :root[data-theme="paper"] {
+    --page:   #f4f2ec;
+    --panel:  #e9e7df;
+    --border: #c2bfb4;
+    --faint:  #9c9a92;
+    --dim:    #5f5d55;
+    --muted:  #3d3b35;
+    --text:   #14130e;
+    --accent: #2563eb;
+    --accent-text: #1d4ed8;
+    --grid:   rgba(0, 0, 0, 0.035);
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    padding: 0 20px 72px;
+    background: var(--page);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 26px 26px;
+    color: var(--muted);
+    font: 15px/1.65 ui-sans-serif, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    transition: background-color .18s linear, color .18s linear;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  /* --- theme switch ------------------------------------------------ */
+  .bar {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin: 0 -20px 26px; padding: 12px 20px;
+    background: color-mix(in srgb, var(--page) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar .tag {
+    font: 600 10.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 1.6px; text-transform: uppercase; color: var(--faint);
+    margin-right: auto;
+  }
+  .switch { display: flex; gap: 6px; }
+  .switch button {
+    font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: .8px; text-transform: uppercase;
+    padding: 8px 14px; cursor: pointer;
+    color: var(--dim); background: var(--panel);
+    border: 1px solid var(--border); border-radius: 2px;
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .switch button:hover { color: var(--text); border-color: var(--faint); }
+  .switch button[aria-pressed="true"] {
+    color: #fff; background: var(--accent); border-color: var(--accent);
+  }
+  .switch button:focus-visible {
+    outline: 2px solid var(--accent-text); outline-offset: 2px;
+  }
+
+  /* --- content ------------------------------------------------------ */
+  .card { display: block; width: 100%; height: auto; margin: 0 0 6px; }
+  section { margin: 0 0 34px; }
+  .note {
+    font: 11.5px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--dim); margin: 2px 0 12px;
+  }
+  ul { margin: 12px 0 0; padding-left: 20px; }
+  li { margin: 7px 0; }
+  strong { color: var(--text); font-weight: 600; }
+  a { color: var(--accent-text); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .links { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px;
+           font: 11.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .contact { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+             margin: 14px 0 0; }
+  .contact a {
+    font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    padding: 9px 14px; border: 1px solid var(--border); border-radius: 2px;
+    background: var(--panel); color: var(--muted);
+  }
+  .contact a:first-child {
+    background: var(--accent); border-color: var(--accent); color: #fff;
+  }
+  .contact a:hover { text-decoration: none; border-color: var(--faint); }
+  footer { text-align: center; margin-top: 38px; color: var(--dim);
+           font-size: 12.5px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="bar">
+    <span class="tag">leo-zhizhu / portfolio</span>
+    <div class="switch" role="group" aria-label="Visual theme">
+      <button type="button" data-set="crt" aria-pressed="true">CRT</button>
+      <button type="button" data-set="paper" aria-pressed="false">Paper</button>
+    </div>
+  </div>
+
+  <section>
+    <img class="card" data-card="hero" alt="Zhu (Leo) Zhi — Cornell CS '28, GPA 4.0 / 4.0. Software Engineer, Machine Learning Engineer, Robotics Engineer.">
+    <div class="contact">
+      <a href="mailto:zhizhu0730@gmail.com">zhizhu0730@gmail.com</a>
+      <a href="mailto:zz766@cornell.edu">zz766@cornell.edu</a>
+      <a href="https://linkedin.com/in/zhu-zhi-506499376">LinkedIn</a>
+      <a href="https://github.com/leo-Zhizhu">GitHub</a>
+    </div>
+  </section>
+
+  <section>
+    <img class="card" data-card="impact" alt="Improvement factor per workload on a log scale: 161x faster city-scale simulation, 80x faster PostGIS queries, 33x less agent context overhead, 5x less AUV control error, 3.5x faster web interaction, 3.3x less fleet upload volume.">
+  </section>
+
+  <section>
+    <img class="card" data-card="card-bonsai" alt="On-vehicle data curation pipeline v2: sensor stream to frame embeddings to a window score measured as distance to characteristic vectors, to a race-free upload gate, to the cloud — with a remote fleet server refreshing those vectors from the full uploaded dataset.">
+    <p class="note">Private company repo, so there is no link — this is the part I can describe.</p>
+    <ul>
+      <li>A fleet records far more than the network can carry home. The pipeline scores every recording window <strong>on the vehicle</strong> and uploads only the informative ones, cutting upload volume <strong>~70%</strong>. Merged to main and running on every vehicle.</li>
+      <li><strong>v1</strong> scored each frame on four orthogonal signals — spatial density, semantic composition, anomalous detections, temporal motion — collapsing them into one window score. Retuning against real field data widened the usable score spread <strong>8×</strong> (σ 0.021 → 0.169).</li>
+      <li><strong>v2</strong> replaces those hand-tuned scorers with embedding-based scoring, and closes the loop: a remote fleet server makes a periodic pass over the full uploaded dataset and pushes refreshed characteristic vectors down to every vehicle. What counts as interesting stops being a constant someone tuned.</li>
+      <li>Re-architected critical uploads around an explicit boundary between the <strong>data layer</strong> (recorder-owned MCAP files) and the <strong>annotation layer</strong> (pipeline-owned time windows), closing the open-recording race.</li>
+      <li>Distilling image–language ability from TIPSv2 into the production BEV perception backbone for <strong>under 3%</strong> added latency, verified on a 24,471-pair benchmark I designed.</li>
+    </ul>
+  </section>
+
+  <section>
+    <img class="card" data-card="card-langalpha" alt="LangAlpha architecture: web, Slack and CLI into an agent core with programmatic tool calling and a subagent swarm, a Daytona sandbox, durable Postgres and Redis state, and 30+ native and MCP tools.">
+    <div class="links">
+      <a href="https://github.com/ginlix-ai/LangAlpha">Repository</a>
+      <a href="https://langalpha.ai">langalpha.ai</a>
+      <span>1.6k stars · 5,000+ users</span>
+    </div>
+    <ul>
+      <li>Rebuilt chat as a <strong>persistent workspace</strong> so users can stop and resume mid-task: Daytona-sandboxed tool execution, PostgreSQL/Redis-backed conversation state, subagent dispatch, memory compaction and durable file storage.</li>
+      <li>Traced <strong>~10k tokens per call</strong> of pure overhead to unused tool schemas shipping on every request, and replaced the static manifest with on-demand tool discovery.</li>
+      <li>Cut Interaction to Next Paint from <strong>140 ms to 40 ms</strong> by moving fetch state into TanStack Query.</li>
+      <li>Routed queries between in-context lookups and sandboxed bulk processing across <strong>30+ native and MCP tools</strong>, so large jobs never exhaust the context window.</li>
+      <li>Own the production release lifecycle end to end — CI/CD, schema migrations, incident response.</li>
+    </ul>
+  </section>
+
+  <section>
+    <img class="card" data-card="card-sunlightcity" alt="SunlightCity pipeline: Unity Manhattan mesh to a headless IL2CPP raycaster to 54 Kubernetes workers to a 9-shard PostGIS cluster, finishing in 11 minutes 9 seconds.">
+    <div class="links">
+      <a href="https://github.com/leo-Zhizhu/SunlightCity------Large-Scale-Simulation-Data-Pipeline">Repository</a>
+      <span>7.89B measurements · 500 GB · 11m 09s</span>
+    </div>
+    <ul>
+      <li>The question, asked 7.89 billion times: <em>at this spot on this street, at 09:03 on 15 June — sun, or shadow?</em> <strong>54 Kubernetes workers</strong> and a <strong>9-instance PostgreSQL cluster</strong> land 500 GB in <strong>11m 09s</strong>. The same work takes <strong>30 hours</strong> on one machine.</li>
+      <li>The fleet size and shard count were not guessed. Both are <strong>derived from a 15-minute deadline</strong> by a capacity model that ships in the repo.</li>
+      <li>Diagnosed database I/O as the ingestion bottleneck and retuned PostGIS spatial indexing, memory allocation and bulk-insert chunk sizing — queries dropped from <strong>~2000 ms to ~25 ms</strong>.</li>
+    </ul>
+  </section>
+
+  <section><img class="card" data-card="stack" alt="Stack grouped by area: languages, ML and perception, agents and LLM systems, robotics and control, backend and web, data and storage, infrastructure and scale, and coursework foundations."></section>
+
+  <section>
+    <img class="card" data-card="shelf" alt="Other projects: GroceryManager, Pixel Social, PaperChat, MiniSpotify and Cornell AUV.">
+    <div class="links">
+      <a href="https://github.com/leo-Zhizhu/GroceryManager">GroceryManager</a>
+      <a href="https://github.com/leo-Zhizhu/Pixel-Social">Pixel Social</a>
+      <a href="https://github.com/leo-Zhizhu/PaperChat">PaperChat</a>
+      <a href="https://github.com/leo-Zhizhu/MiniSpotify">MiniSpotify</a>
+      <a href="https://cuauv.org">Cornell AUV</a>
+    </div>
+  </section>
+
+  <section><img class="card" data-card="github" alt="GitHub at a glance: 1.6k stars earned, 12 public repos, 13 followers, 11 languages in use."></section>
+  <section><img class="card" data-card="principles" alt="How I think about the work: tradeoffs not perfect solutions, the real world is the test, humans stay in the loop, and what I am currently learning."></section>
+
+  <footer>
+    Open to internships, collaboration, research, and interesting problems.<br>
+    <em>Software is not just logic — it's a contract with reality.</em>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var THEMES = ["crt", "paper"];
+    var root = document.documentElement;
+    var cards = document.querySelectorAll("[data-card]");
+    var buttons = document.querySelectorAll(".switch button");
+
+    function apply(theme, persist) {
+      if (THEMES.indexOf(theme) < 0) { theme = "crt"; }
+      root.setAttribute("data-theme", theme);
+      cards.forEach(function (img) {
+        img.src = "../profile/" + img.dataset.card + "-" + theme + ".png";
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b.dataset.set === theme));
+      });
+      if (persist) {
+        try { localStorage.setItem("portfolio-theme", theme); } catch (e) {}
+      }
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem("portfolio-theme"); } catch (e) {}
+    // No stored choice: follow the same signal the README does, so the page
+    // and the profile agree on first visit.
+    apply(saved || (window.matchMedia("(prefers-color-scheme: light)").matches
+                    ? "paper" : "crt"), false);
+
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () { apply(b.dataset.set, true); });
+    });
+
+    window.matchMedia("(prefers-color-scheme: light)").addEventListener(
+      "change", function (e) {
+        var stored = null;
+        try { stored = localStorage.getItem("portfolio-theme"); } catch (err) {}
+        if (!stored) { apply(e.matches ? "paper" : "crt", false); }
+      });
+  })();
+</script>
+</body>
+</html>

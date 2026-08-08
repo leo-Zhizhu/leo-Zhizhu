@@ -38,32 +38,44 @@ SCALE = 2
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROFILE = os.path.join(ROOT, "profile")
 
-# The card palette, plus the two lifted steps type is allowed to use. Ordered
-# dithering blends between these; nothing outside the list survives.
-PALETTE = [
-    (0x0A, 0x0A, 0x0A),
-    (0x0F, 0x0F, 0x0F),
-    (0x12, 0x12, 0x12),
-    (0x1E, 0x1E, 0x1E),
-    (0x33, 0x33, 0x33),
-    (0x58, 0x58, 0x58),
-    (0x8B, 0x8B, 0x8B),
-    (0xB4, 0xB4, 0xB4),
-    (0xE8, 0xE8, 0xE8),
-    (0x1B, 0x3F, 0x8F),
-    (0x25, 0x63, 0xEB),
-    (0x3B, 0x82, 0xF6),
-    (0x8A, 0xB4, 0xFA),
-]
+# One entry per skin. Ordered dithering blends between a skin's palette
+# entries; nothing outside its list survives.
+#
+# The effects are NOT shared. Bloom is phosphor glow -- it only makes sense
+# where bright marks sit on a dark tube. On paper the equivalent artefact is
+# ink spread, so the light skin drops bloom to almost nothing and leans on
+# halftone dithering and grain instead, and its scanlines are far shallower
+# because a dark line across a light field is a much louder mark.
+THEME_RENDER = {
+    "crt": {
+        "palette": [
+            (0x0A, 0x0A, 0x0A), (0x0F, 0x0F, 0x0F), (0x12, 0x12, 0x12),
+            (0x1E, 0x1E, 0x1E), (0x33, 0x33, 0x33), (0x58, 0x58, 0x58),
+            (0x8B, 0x8B, 0x8B), (0xB4, 0xB4, 0xB4), (0xE8, 0xE8, 0xE8),
+            (0x1B, 0x3F, 0x8F), (0x25, 0x63, 0xEB), (0x3B, 0x82, 0xF6),
+            (0x8A, 0xB4, 0xFA),
+        ],
+        "bloom_threshold": 96, "bloom_strength": 0.42,
+        "scanline_depth": 0.13, "rgb_split_mix": 0.45,
+        "grain_sigma": 2.2, "dither_strength": 17.0,
+    },
+    "paper": {
+        "palette": [
+            (0xFA, 0xF9, 0xF5), (0xF4, 0xF2, 0xEC), (0xE9, 0xE7, 0xDF),
+            (0xDA, 0xD7, 0xCC), (0xC2, 0xBF, 0xB4), (0x9C, 0x9A, 0x92),
+            (0x7B, 0x79, 0x71), (0x5F, 0x5D, 0x55), (0x3D, 0x3B, 0x35),
+            (0x14, 0x13, 0x0E),
+            (0x8A, 0xB4, 0xFA), (0x3B, 0x82, 0xF6), (0x25, 0x63, 0xEB),
+            (0x1D, 0x4E, 0xD8),
+        ],
+        "bloom_threshold": 210, "bloom_strength": 0.10,
+        "scanline_depth": 0.055, "rgb_split_mix": 0.28,
+        "grain_sigma": 2.6, "dither_strength": 15.0,
+    },
+}
 
 BLOOM_RADIUS = 6
-BLOOM_THRESHOLD = 96
-BLOOM_STRENGTH = 0.42
-SCANLINE_DEPTH = 0.13
 SCANLINE_PERIOD = 2      # CSS pixels per light/dark pair
-RGB_SPLIT_MIX = 0.45     # full channel displacement fringes type badly
-GRAIN_SIGMA = 2.2      # visible grain, but random noise is what costs PNG bytes
-DITHER_STRENGTH = 17.0
 
 
 def chrome() -> str:
@@ -83,7 +95,7 @@ def svg_size(path: str) -> tuple[int, int]:
     return w, h
 
 
-def rasterise(svg_path: str, w: int, h: int) -> Image.Image:
+def rasterise(svg_path: str, w: int, h: int, cfg: dict) -> Image.Image:
     """Screenshot the SVG at SCALE via headless Chrome."""
     with tempfile.TemporaryDirectory() as tmp:
         page = os.path.join(tmp, "page.html")
@@ -103,46 +115,47 @@ def rasterise(svg_path: str, w: int, h: int) -> Image.Image:
         return Image.open(shot).convert("RGB").copy()
 
 
-def bloom(img: Image.Image) -> Image.Image:
+def bloom(img: Image.Image, cfg: dict) -> Image.Image:
     """Screen a blurred copy of the bright areas back over the frame."""
+    threshold, strength = cfg["bloom_threshold"], cfg["bloom_strength"]
     arr = np.asarray(img).astype(np.float32)
-    bright = np.clip(arr - BLOOM_THRESHOLD, 0, None) * \
-        (255.0 / max(255 - BLOOM_THRESHOLD, 1))
+    bright = np.clip(arr - threshold, 0, None) * \
+        (255.0 / max(255 - threshold, 1))
     glow = Image.fromarray(bright.astype(np.uint8)).filter(
         ImageFilter.GaussianBlur(BLOOM_RADIUS * SCALE / 2))
-    g = np.asarray(glow).astype(np.float32) * BLOOM_STRENGTH
+    g = np.asarray(glow).astype(np.float32) * strength
     # screen blend keeps highlights from clipping to flat white
     out = 255.0 - (255.0 - arr) * (255.0 - g) / 255.0
     return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
 
 
-def rgb_split(img: Image.Image, shift: int = 1) -> Image.Image:
+def rgb_split(img: Image.Image, cfg: dict, shift: int = 1) -> Image.Image:
     """Sub-pixel red/blue displacement, mixed rather than replaced so glyph
     edges pick up a fringe without the whole stroke turning colour."""
     arr = np.asarray(img).astype(np.float32)
     out = arr.copy()
-    m = RGB_SPLIT_MIX
+    m = cfg["rgb_split_mix"]
     out[:, shift:, 0] = arr[:, shift:, 0] * (1 - m) + arr[:, :-shift, 0] * m
     out[:, :-shift, 2] = arr[:, :-shift, 2] * (1 - m) + arr[:, shift:, 2] * m
     return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
 
 
-def scanlines(img: Image.Image) -> Image.Image:
+def scanlines(img: Image.Image, cfg: dict) -> Image.Image:
     # One dark CSS row per light one: the period has to be >= 2 CSS px or the
     # browser's downscale to width=880 averages the lines away entirely.
     arr = np.asarray(img).astype(np.float32)
     period = SCANLINE_PERIOD * SCALE
     mask = np.ones(arr.shape[0], dtype=np.float32)
     for row in range(SCALE):
-        mask[row::period] = 1.0 - SCANLINE_DEPTH
+        mask[row::period] = 1.0 - cfg["scanline_depth"]
     arr *= mask[:, None, None]
     return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
 
 
-def grain(img: Image.Image, seed: int) -> Image.Image:
+def grain(img: Image.Image, cfg: dict, seed: int) -> Image.Image:
     rng = np.random.default_rng(seed)
     arr = np.asarray(img).astype(np.float32)
-    noise = rng.normal(0.0, GRAIN_SIGMA, arr.shape[:2])[:, :, None]
+    noise = rng.normal(0.0, cfg["grain_sigma"], arr.shape[:2])[:, :, None]
     return Image.fromarray(np.clip(arr + noise, 0, 255).astype(np.uint8))
 
 
@@ -153,15 +166,15 @@ def _bayer(n: int = 8) -> np.ndarray:
     return m / m.size - 0.5
 
 
-def quantise(img: Image.Image) -> Image.Image:
+def quantise(img: Image.Image, cfg: dict) -> Image.Image:
     """Ordered-dither to PALETTE. This is what makes the tones read as dots."""
     arr = np.asarray(img).astype(np.float32)
-    tile = _bayer(8) * DITHER_STRENGTH
+    tile = _bayer(8) * cfg["dither_strength"]
     reps = (arr.shape[0] // 8 + 1, arr.shape[1] // 8 + 1)
     offset = np.tile(tile, reps)[:arr.shape[0], :arr.shape[1], None]
     arr = np.clip(arr + offset, 0, 255)
 
-    pal = np.array(PALETTE, dtype=np.float32)
+    pal = np.array(cfg["palette"], dtype=np.float32)
     flat = arr.reshape(-1, 3)
     # nearest palette entry, in chunks so a big card does not blow up memory
     out = np.empty(flat.shape, dtype=np.uint8)
@@ -172,21 +185,30 @@ def quantise(img: Image.Image) -> Image.Image:
     return Image.fromarray(out.reshape(arr.shape))
 
 
-def process(svg_path: str, png_path: str) -> None:
+def theme_of(name: str) -> str:
+    """Card files are `<card>-<theme>.svg`."""
+    for theme in THEME_RENDER:
+        if name.endswith(f"-{theme}"):
+            return theme
+    raise SystemExit(f"{name}: no known theme suffix")
+
+
+def process(svg_path: str, png_path: str, theme: str) -> None:
+    cfg = THEME_RENDER[theme]
     w, h = svg_size(svg_path)
-    img = rasterise(svg_path, w, h)
+    img = rasterise(svg_path, w, h, cfg)
     if img.size != (w * SCALE, h * SCALE):
         img = img.resize((w * SCALE, h * SCALE), Image.LANCZOS)
-    img = bloom(img)
-    img = rgb_split(img)
-    img = scanlines(img)
+    img = bloom(img, cfg)
+    img = rgb_split(img, cfg)
+    img = scanlines(img, cfg)
     # crc32, not hash(): str hashing is salted per process, so hash()
     # would reseed the grain on every run and churn the diff.
-    img = grain(img, seed=zlib.crc32(
+    img = grain(img, cfg, seed=zlib.crc32(
         os.path.basename(svg_path).encode()))
-    img = quantise(img)
-    img.convert("P", palette=Image.ADAPTIVE, colors=len(PALETTE)).save(
-        png_path, optimize=True)
+    img = quantise(img, cfg)
+    img.convert("P", palette=Image.ADAPTIVE,
+                colors=len(cfg["palette"])).save(png_path, optimize=True)
     size_kb = os.path.getsize(png_path) / 1024
     print(f"wrote {png_path} ({w * SCALE}x{h * SCALE}, {size_kb:.0f} KB)")
 
@@ -200,7 +222,7 @@ def main() -> None:
         raise SystemExit("no matching SVGs in profile/")
     for name in names:
         process(os.path.join(PROFILE, f"{name}.svg"),
-                os.path.join(PROFILE, f"{name}.png"))
+                os.path.join(PROFILE, f"{name}.png"), theme_of(name))
 
 
 if __name__ == "__main__":
