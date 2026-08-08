@@ -214,11 +214,18 @@
     var cards = document.querySelectorAll("[data-card]");
     var buttons = document.querySelectorAll(".switch button");
 
+    // Pages publishes /docs AS the site root, so "../profile/" escapes the
+    // published tree and 404s -- the cards live at profile/ in the repo root,
+    // which Pages never serves. Point at the repo directly instead. Keeping a
+    // single copy of the PNGs matters here: the daily workflow re-renders all
+    // 20 of them, so a mirrored copy under docs/ would double that churn.
+    var CARDS = "https://raw.githubusercontent.com/leo-Zhizhu/leo-Zhizhu/main/profile/";
+
     function apply(theme, persist) {
       if (THEMES.indexOf(theme) < 0) { theme = "crt"; }
       root.setAttribute("data-theme", theme);
       cards.forEach(function (img) {
-        img.src = "../profile/" + img.dataset.card + "-" + theme + ".png";
+        img.src = CARDS + img.dataset.card + "-" + theme + ".png";
       });
       buttons.forEach(function (b) {
         b.setAttribute("aria-pressed", String(b.dataset.set === theme));
