@@ -21,18 +21,18 @@
 <rect x="646.0" y="92.0" width="1.0" height="40.0" rx="0" fill="url(#dt8d)"/>
 <rect x="28.0" y="146.0" width="824.0" height="2.0" rx="0" fill="url(#dt8d)"/><rect x="28.0" y="148.0" width="824.0" height="2.0" rx="0" fill="url(#dt6d)"/><rect x="28.0" y="150.0" width="824.0" height="2.0" rx="0" fill="url(#dt4d)"/><rect x="28.0" y="152.0" width="824.0" height="2.0" rx="0" fill="url(#dt2d)"/>
 <text x="32.0" y="178.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5f5d55" text-anchor="start">language mix, by bytes of code</text>
-<rect x="32.0" y="188.0" width="516.7" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="32.0" y="188.0" width="516.7" height="14.0" rx="0" fill="#2563eb"/>
-<rect x="550.7" y="188.0" width="249.7" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="550.7" y="188.0" width="249.7" height="14.0" rx="0" fill="url(#dt12a)"/>
-<rect x="802.3" y="188.0" width="13.4" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="802.3" y="188.0" width="13.4" height="14.0" rx="0" fill="url(#dt8a)"/>
-<rect x="817.7" y="188.0" width="11.5" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="817.7" y="188.0" width="11.5" height="14.0" rx="0" fill="url(#dt12m)"/>
-<rect x="831.2" y="188.0" width="4.8" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="831.2" y="188.0" width="4.8" height="14.0" rx="0" fill="url(#dt8m)"/>
-<rect x="837.9" y="188.0" width="8.1" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="837.9" y="188.0" width="8.1" height="14.0" rx="0" fill="url(#dt5m)"/>
+<rect x="32.0" y="188.0" width="516.3" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="32.0" y="188.0" width="516.3" height="14.0" rx="0" fill="#2563eb"/>
+<rect x="550.3" y="188.0" width="250.2" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="550.3" y="188.0" width="250.2" height="14.0" rx="0" fill="url(#dt12a)"/>
+<rect x="802.4" y="188.0" width="13.4" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="802.4" y="188.0" width="13.4" height="14.0" rx="0" fill="url(#dt8a)"/>
+<rect x="817.9" y="188.0" width="11.4" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="817.9" y="188.0" width="11.4" height="14.0" rx="0" fill="url(#dt12m)"/>
+<rect x="831.3" y="188.0" width="4.7" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="831.3" y="188.0" width="4.7" height="14.0" rx="0" fill="url(#dt8m)"/>
+<rect x="838.0" y="188.0" width="8.0" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="838.0" y="188.0" width="8.0" height="14.0" rx="0" fill="url(#dt5m)"/>
 <rect x="32.0" y="188.0" width="816.0" height="14.0" rx="0" fill="none" stroke="#c2bfb4" stroke-width="1"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#f4f2ec"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#2563eb"/>
