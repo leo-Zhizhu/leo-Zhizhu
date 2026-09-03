@@ -21,23 +21,23 @@
 <rect x="646.0" y="92.0" width="1.0" height="40.0" rx="0" fill="url(#dt8d)"/>
 <rect x="28.0" y="146.0" width="824.0" height="2.0" rx="0" fill="url(#dt8d)"/><rect x="28.0" y="148.0" width="824.0" height="2.0" rx="0" fill="url(#dt6d)"/><rect x="28.0" y="150.0" width="824.0" height="2.0" rx="0" fill="url(#dt4d)"/><rect x="28.0" y="152.0" width="824.0" height="2.0" rx="0" fill="url(#dt2d)"/>
 <text x="32.0" y="178.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5f5d55" text-anchor="start">language mix, by bytes of code</text>
-<rect x="32.0" y="188.0" width="508.2" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="32.0" y="188.0" width="508.2" height="14.0" rx="0" fill="#2563eb"/>
-<rect x="542.2" y="188.0" width="250.3" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="542.2" y="188.0" width="250.3" height="14.0" rx="0" fill="url(#dt12a)"/>
-<rect x="794.5" y="188.0" width="24.6" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="794.5" y="188.0" width="24.6" height="14.0" rx="0" fill="url(#dt8a)"/>
-<rect x="821.1" y="188.0" width="10.0" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="821.1" y="188.0" width="10.0" height="14.0" rx="0" fill="url(#dt12m)"/>
+<rect x="32.0" y="188.0" width="506.4" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="32.0" y="188.0" width="506.4" height="14.0" rx="0" fill="#2563eb"/>
+<rect x="540.4" y="188.0" width="252.3" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="540.4" y="188.0" width="252.3" height="14.0" rx="0" fill="url(#dt12a)"/>
+<rect x="794.7" y="188.0" width="24.5" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="794.7" y="188.0" width="24.5" height="14.0" rx="0" fill="url(#dt8a)"/>
+<rect x="821.2" y="188.0" width="10.0" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="821.2" y="188.0" width="10.0" height="14.0" rx="0" fill="url(#dt12m)"/>
 <rect x="833.1" y="188.0" width="4.0" height="14.0" rx="0" fill="#f4f2ec"/>
 <rect x="833.1" y="188.0" width="4.0" height="14.0" rx="0" fill="url(#dt8m)"/>
-<rect x="839.1" y="188.0" width="6.9" height="14.0" rx="0" fill="#f4f2ec"/>
-<rect x="839.1" y="188.0" width="6.9" height="14.0" rx="0" fill="url(#dt5m)"/>
+<rect x="839.2" y="188.0" width="6.8" height="14.0" rx="0" fill="#f4f2ec"/>
+<rect x="839.2" y="188.0" width="6.8" height="14.0" rx="0" fill="url(#dt5m)"/>
 <rect x="32.0" y="188.0" width="816.0" height="14.0" rx="0" fill="none" stroke="#c2bfb4" stroke-width="1"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#f4f2ec"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#2563eb"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="none" stroke="#c2bfb4" stroke-width="1"/>
-<text x="47.0" y="222.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#3d3b35" text-anchor="start">Python 63%</text>
+<text x="47.0" y="222.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#3d3b35" text-anchor="start">Python 62%</text>
 <rect x="125.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#f4f2ec"/>
 <rect x="125.0" y="214.0" width="9.0" height="9.0" rx="0" fill="url(#dt12a)"/>
 <rect x="125.0" y="214.0" width="9.0" height="9.0" rx="0" fill="none" stroke="#c2bfb4" stroke-width="1"/>
