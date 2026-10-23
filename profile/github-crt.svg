@@ -8,7 +8,7 @@
 <g clip-path="url(#card)"><rect x="0.0" y="0.0" width="4.0" height="100.0" rx="0" fill="#2563eb"/><rect x="0.0" y="100.0" width="4.0" height="27.6" rx="0" fill="url(#dt12a)"/><rect x="0.0" y="127.6" width="4.0" height="27.6" rx="0" fill="url(#dt8a)"/><rect x="0.0" y="155.2" width="4.0" height="27.6" rx="0" fill="url(#dt5a)"/><rect x="0.0" y="182.8" width="4.0" height="27.6" rx="0" fill="url(#dt3a)"/><rect x="0.0" y="210.4" width="4.0" height="27.6" rx="0" fill="url(#dt2a)"/></g>
 <text x="32.0" y="44.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="start" letter-spacing="1.6">GITHUB AT A GLANCE</text>
 <text x="32.0" y="66.0" font-family="ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif" font-size="12.5" fill="#b4b4b4" text-anchor="start">Public repositories I own, plus the org repo I ship day to day.</text>
-<text x="131.0" y="108.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="19" font-weight="600" fill="#3b82f6" text-anchor="middle">1.9k</text>
+<text x="131.0" y="108.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="19" font-weight="600" fill="#3b82f6" text-anchor="middle">2k</text>
 <text x="131.0" y="125.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#b4b4b4" text-anchor="middle">stars earned</text>
 <text x="337.0" y="108.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="19" font-weight="600" fill="#3b82f6" text-anchor="middle">12</text>
 <text x="337.0" y="125.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#b4b4b4" text-anchor="middle">public repos</text>
@@ -21,18 +21,18 @@
 <rect x="646.0" y="92.0" width="1.0" height="40.0" rx="0" fill="url(#dt8d)"/>
 <rect x="28.0" y="146.0" width="824.0" height="2.0" rx="0" fill="url(#dt8d)"/><rect x="28.0" y="148.0" width="824.0" height="2.0" rx="0" fill="url(#dt6d)"/><rect x="28.0" y="150.0" width="824.0" height="2.0" rx="0" fill="url(#dt4d)"/><rect x="28.0" y="152.0" width="824.0" height="2.0" rx="0" fill="url(#dt2d)"/>
 <text x="32.0" y="178.0" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#8b8b8b" text-anchor="start">language mix, by bytes of code</text>
-<rect x="32.0" y="188.0" width="521.3" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="32.0" y="188.0" width="521.3" height="14.0" rx="0" fill="#2563eb"/>
-<rect x="555.3" y="188.0" width="255.7" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="555.3" y="188.0" width="255.7" height="14.0" rx="0" fill="url(#dt12a)"/>
-<rect x="813.1" y="188.0" width="17.1" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="813.1" y="188.0" width="17.1" height="14.0" rx="0" fill="url(#dt8a)"/>
-<rect x="832.1" y="188.0" width="4.6" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="832.1" y="188.0" width="4.6" height="14.0" rx="0" fill="url(#dt12m)"/>
-<rect x="838.8" y="188.0" width="3.0" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="838.8" y="188.0" width="3.0" height="14.0" rx="0" fill="url(#dt8m)"/>
-<rect x="843.8" y="188.0" width="3.9" height="14.0" rx="0" fill="#0f0f0f"/>
-<rect x="843.8" y="188.0" width="3.9" height="14.0" rx="0" fill="url(#dt5m)"/>
+<rect x="32.0" y="188.0" width="518.4" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="32.0" y="188.0" width="518.4" height="14.0" rx="0" fill="#2563eb"/>
+<rect x="552.4" y="188.0" width="259.3" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="552.4" y="188.0" width="259.3" height="14.0" rx="0" fill="url(#dt12a)"/>
+<rect x="813.7" y="188.0" width="16.7" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="813.7" y="188.0" width="16.7" height="14.0" rx="0" fill="url(#dt8a)"/>
+<rect x="832.4" y="188.0" width="4.5" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="832.4" y="188.0" width="4.5" height="14.0" rx="0" fill="url(#dt12m)"/>
+<rect x="838.9" y="188.0" width="3.0" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="838.9" y="188.0" width="3.0" height="14.0" rx="0" fill="url(#dt8m)"/>
+<rect x="843.9" y="188.0" width="3.8" height="14.0" rx="0" fill="#0f0f0f"/>
+<rect x="843.9" y="188.0" width="3.8" height="14.0" rx="0" fill="url(#dt5m)"/>
 <rect x="32.0" y="188.0" width="816.0" height="14.0" rx="0" fill="none" stroke="#333333" stroke-width="1"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#0f0f0f"/>
 <rect x="32.0" y="214.0" width="9.0" height="9.0" rx="0" fill="#2563eb"/>
