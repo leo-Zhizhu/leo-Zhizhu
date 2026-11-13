@@ -1,4 +1,4 @@
-<!-- profile cards updated: 2026-11-12 -->
+<!-- profile cards updated: 2026-11-13 -->
 <!-- Cards: python3 tools/generate_profile_cards.py && python3 tools/render_cards.py -->
 
 <div align="center">
